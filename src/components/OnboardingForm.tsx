@@ -94,7 +94,6 @@ const STEPS = [
   { id: 3, name: 'Address', label: 'Owner Address', icon: MapPin },
   { id: 4, name: 'Business', label: 'Business & Address', icon: Building2 },
   { id: 5, name: 'Docs', label: 'Documents', icon: Upload },
-  { id: 6, name: 'Signature', label: 'Signature', icon: PenTool },
 ];
 
 export default function OnboardingForm() {
@@ -438,15 +437,8 @@ export default function OnboardingForm() {
         filePaths[`doc_${key.replace('zone_', '')}`] = fileName;
       });
 
-      // 2. Upload Signature
-      if (sigDataUrl) {
-        const sigBlob = await (await fetch(sigDataUrl)).blob();
-        const sigPath = `${formData.id}/signature.png`;
-        const { error } = await supabase.storage.from('merchant-signatures').upload(sigPath, sigBlob);
-        if (error) throw error;
-        filePaths.doc_signature = sigPath;
-      }
-
+      // 2. Upload Signature (REMOVED)
+      
       await Promise.all(uploadPromises);
 
       // 3. Insert Record
@@ -924,36 +916,8 @@ export default function OnboardingForm() {
               </div>
             )}
 
-            {/* Step 6: Signature */}
-            {currentStep === 6 && (
-              <div className="space-y-6">
-                <div className="flex items-center gap-2 text-[13px] font-semibold text-text3 uppercase tracking-widest border-b border-border pb-3">
-                  <div className="w-1 h-4 bg-accent rounded-full" />
-                  Merchant Signature
-                </div>
-                <div className="text-xs text-text3">Draw your signature below</div>
-                <div className="border-1.5 border-dashed border-border2 rounded-sm bg-bg overflow-hidden">
-                  <SignaturePad 
-                    ref={sigCanvas}
-                    options={{ penColor: '#000000' }}
-                  />
-                </div>
-                <div className="flex gap-2">
-                  <button onClick={clearSig} className="flex-1 p-2 bg-surface2 border border-border rounded-sm text-xs font-medium text-text2 hover:text-accent hover:border-accent transition-all">
-                    ✕ Clear
-                  </button>
-                  <button onClick={saveSig} className="flex-1 p-2 bg-surface2 border border-border rounded-sm text-xs font-medium text-text2 hover:text-accent hover:border-accent transition-all">
-                    ✓ Save
-                  </button>
-                </div>
-                {sigDataUrl && (
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-xs text-success flex items-center gap-1">
-                    <CheckCircle2 className="w-3 h-3" /> Signature saved
-                  </motion.div>
-                )}
-              </div>
-            )}
-
+            {/* Step 6: Signature - REMOVED */}
+            
             {/* Step 7: Preview - REMOVED */}
           </motion.div>
         </AnimatePresence>
