@@ -1,0 +1,337 @@
+[
+  {
+    "group": "Group 7 F&B, Retail (0.5)",
+    "mccs": [
+      {
+        "mcc_name": "GENERAL CONTRACTORS-RESIDENTIAL BUILDINGS",
+        "mcc_code": "1520"
+      },
+      {
+        "mcc_name": "LIMOUSINES AND TAXICABS",
+        "mcc_code": "4121"
+      },
+      {
+        "mcc_name": "FREIGHT CARRIER TRUCKING-LCL-LNG DIST MVG-STORAGE",
+        "mcc_code": "4214"
+      },
+      {
+        "mcc_name": "TELECOMMUNICATION EQUIPMENT INCL TELEPHONE SALES",
+        "mcc_code": "4812"
+      },
+      {
+        "mcc_name": "COMPUTERS COMPUTER PERIPHERAL EQUIPMENT SOFTWARE",
+        "mcc_code": "5045"
+      },
+      {
+        "mcc_name": "DENTAL-LAB-MED-OPHTHALMIC HOSP EQUIP + SUPPLIES",
+        "mcc_code": "5047"
+      },
+      {
+        "mcc_name": "STATIONERY-OFFICE SUPPLIES-PRINTING + WRITING PAP.",
+        "mcc_code": "5111"
+      },
+      {
+        "mcc_name": "HOME SUPPLY WAREHOUSE STORES",
+        "mcc_code": "5200"
+      },
+      {
+        "mcc_name": "LAWN AND GARDEN SUPPLY STORES",
+        "mcc_code": "5261"
+      },
+      {
+        "mcc_name": "ONLINE MARKETPLACE",
+        "mcc_code": "5262"
+      },
+      {
+        "mcc_name": "DUTY FREE STORES",
+        "mcc_code": "5309"
+      },
+      {
+        "mcc_name": "DEPARTMENT STORES / SUPERMARKET",
+        "mcc_code": "5311"
+      },
+      {
+        "mcc_name": "BAKERIES",
+        "mcc_code": "5462"
+      },
+      {
+        "mcc_name": "AUTOMOTIVE PARTS ACCESSORIES STORES",
+        "mcc_code": "5533"
+      },
+      {
+        "mcc_name": "CHILDREN'S AND INFANT'S WEAR STORES",
+        "mcc_code": "5641"
+      },
+      {
+        "mcc_name": "SHOE STORES",
+        "mcc_code": "5661"
+      },
+      {
+        "mcc_name": "MEN'S AND WOMEN'S CLOTHING STORES",
+        "mcc_code": "5691"
+      },
+      {
+        "mcc_name": "ALTERATIONS MENDING SEAMSTRESSES TAILORS",
+        "mcc_code": "5697"
+      },
+      {
+        "mcc_name": "ACCESSORY AND APPAREL STORES-MISCELLANEOUS",
+        "mcc_code": "5699"
+      },
+      {
+        "mcc_name": "EQUIP FURNITURE HOME FURNSHNGS STRS (EXCPT APPL)",
+        "mcc_code": "5712"
+      },
+      {
+        "mcc_name": "DRAPERY UPOLSTERY AND WINDOW COVERINGS STORES",
+        "mcc_code": "5714"
+      },
+      {
+        "mcc_name": "MUSIC STORES-INSTRUMENTS PIANOS SHEET MUSIC",
+        "mcc_code": "5733"
+      },
+      {
+        "mcc_name": "Eating Places, Restaurants",
+        "mcc_code": "5812"
+      },
+      {
+        "mcc_name": "Bars, Cocktail Lounges, Discotheques, Nightclubs, and Taverns: Drinking Places",
+        "mcc_code": "5813"
+      },
+      {
+        "mcc_name": "PACKAGE STORES BEER WINE LIQUOR",
+        "mcc_code": "5921"
+      },
+      {
+        "mcc_name": "Pawn Shop",
+        "mcc_code": "5933"
+      },
+      {
+        "mcc_name": "BICYCLE SHOPS-SALES AND SERVICE",
+        "mcc_code": "5940"
+      },
+      {
+        "mcc_name": "GAME TOY AND HOBBY SHOPS",
+        "mcc_code": "5945"
+      },
+      {
+        "mcc_name": "CAMERA AND PHOTOGRAPHIC SUPPLY STORES",
+        "mcc_code": "5946"
+      },
+      {
+        "mcc_name": "GIFT CARD NOVELTY AND SOUVENIR SHOPS",
+        "mcc_code": "5947"
+      },
+      {
+        "mcc_name": "LEATHER GOODS AND LUGGAGE STORES",
+        "mcc_code": "5948"
+      },
+      {
+        "mcc_name": "FABRIC NEEDLEWORK PIECE GOODS AND SEWING STORES",
+        "mcc_code": "5949"
+      },
+      {
+        "mcc_name": "CRYSTAL AND GLASSWARE STORES",
+        "mcc_code": "5950"
+      },
+      {
+        "mcc_name": "DOOR-TO-DOOR SALES",
+        "mcc_code": "5963"
+      },
+      {
+        "mcc_name": "ARTIST SUPPLY STORES CRAFT SHOPS",
+        "mcc_code": "5970"
+      },
+      {
+        "mcc_name": "ART DEALERS AND GALLERIES",
+        "mcc_code": "5971"
+      },
+      {
+        "mcc_name": "RELIGIOUS GOODS STORES",
+        "mcc_code": "5973"
+      },
+      {
+        "mcc_name": "COSMETIC STORES",
+        "mcc_code": "5977"
+      },
+      {
+        "mcc_name": "PET SHOPS - PET FOODS AND SUPPLIES",
+        "mcc_code": "5995"
+      },
+      {
+        "mcc_name": "MISCELLANEOUS AND SPECIALTY RETAIL STORES",
+        "mcc_code": "5999"
+      },
+      {
+        "mcc_name": "INSURANCE SALES UNDERWRITING AND PREMIUMS",
+        "mcc_code": "6300"
+      },
+      {
+        "mcc_name": "REAL ESTATE AGENTS AND MANAGERS-RENTALS",
+        "mcc_code": "6513"
+      },
+      {
+        "mcc_name": "CLEANING GARMENT AND LAUNDRY SERVICES",
+        "mcc_code": "7210"
+      },
+      {
+        "mcc_name": "PHOTOGRAPHIC STUDIOS",
+        "mcc_code": "7221"
+      },
+      {
+        "mcc_name": "CLOTHING RENTAL-COSTUMES UNIFORMS FORMAL WEAR",
+        "mcc_code": "7296"
+      },
+      {
+        "mcc_name": "HEALTH AND BEAUTY SPAS",
+        "mcc_code": "7298"
+      },
+      {
+        "mcc_name": "OTHER SERVICES (NOT ELSEWHERE CLASSIFIED)",
+        "mcc_code": "7299"
+      },
+      {
+        "mcc_name": "EMPLOYMENT AGENCIES TEMPORARY HELP SERVICES",
+        "mcc_code": "7361"
+      },
+      {
+        "mcc_name": "CONSULTING MANAGEMENT AND PUBLIC RELATIONS SVCS",
+        "mcc_code": "7392"
+      },
+      {
+        "mcc_name": "DETECTVE-PROTECTVE AGNCY SECURITY SRVS ARMOR CARS",
+        "mcc_code": "7393"
+      },
+      {
+        "mcc_name": "EQUIPMENT RENTAL+LEASING SVS FURNTURE-TOOL RENTAL",
+        "mcc_code": "7394"
+      },
+      {
+        "mcc_name": "BUSINESS SERVICES-NOT ELSEWHERE CLASSIFIED",
+        "mcc_code": "7399"
+      },
+      {
+        "mcc_name": "MOTION PICTURE THEATERS",
+        "mcc_code": "7832"
+      },
+      {
+        "mcc_name": "DANCE HALLS SCHOOLS AND STUDIOS",
+        "mcc_code": "7911"
+      },
+      {
+        "mcc_name": "TOURIST ATTRACTIONS AND EXHIBITS",
+        "mcc_code": "7991"
+      },
+      {
+        "mcc_name": "GOLF COURSES-PUBLIC",
+        "mcc_code": "7992"
+      },
+      {
+        "mcc_name": "AMUSEMENT PARKS CARNIVALS CIRCUS FORTUNE TELLERS",
+        "mcc_code": "7996"
+      },
+      {
+        "mcc_name": "CLUBS-CNTRY MBRSHIP(ATHLET REC SPRTS PRIVATE GOLF)",
+        "mcc_code": "7997"
+      }
+    ]
+  },
+  {
+    "group": "Group 6 Health & Education (0.5)",
+    "mccs": [
+      {
+        "mcc_name": "OPTICIANS OPTICAL GOODS + EYEGLASSES",
+        "mcc_code": "8043"
+      },
+      {
+        "mcc_name": "HOSPITALS",
+        "mcc_code": "8062"
+      },
+      {
+        "mcc_name": "HEALTH PRACTITIONERS MEDICAL SRVCS-NOT ELSEWHERE",
+        "mcc_code": "8099"
+      },
+      {
+        "mcc_name": "SCHOOLS + EDUCATIONAL SVC-NOT ELSEWHERE CLASSIFIED",
+        "mcc_code": "8299"
+      }
+    ]
+  },
+  {
+    "group": "Group 2 Tourism (0.6)",
+    "mccs": [
+      {
+        "mcc_name": "AIR CARRIERS AIRLINES-NOT ELSEWHERE CLASSIFIED",
+        "mcc_code": "4511"
+      },
+      {
+        "mcc_name": "CRUISE LINES",
+        "mcc_code": "4411"
+      },
+      {
+        "mcc_name": "TRAVEL AGENCIES AND TOUR OPERATORS",
+        "mcc_code": "4722"
+      },
+      {
+        "mcc_name": "LODGING-HOTELS MOTELS RESORTS-NOT CLASSIFIED",
+        "mcc_code": "7011"
+      },
+      {
+        "mcc_name": "CLOCK JEWELRY WATCH AND SILVERWARE STORE",
+        "mcc_code": "5944"
+      },
+      {
+        "mcc_name": "BANDS ORCHESTRAS + MISC ENTRTNRS-NOT ELSWHR CLAS",
+        "mcc_code": "7929"
+      }
+    ]
+  },
+  {
+    "group": "Group 1 Government",
+    "mccs": [
+      {
+        "mcc_name": "Government Services—not elsewhere classified",
+        "mcc_code": "9399"
+      },
+      {
+        "mcc_name": "Tax Payments",
+        "mcc_code": "9311"
+      },
+      {
+        "mcc_name": "Public Transportation",
+        "mcc_code": "4131"
+      }
+    ]
+  },
+  {
+    "group": "Group 4 SME , Store (0.30)",
+    "mccs": [
+      {
+        "mcc_name": "MISCELLANEOUS GENERAL MERCHANDISE",
+        "mcc_code": "5399"
+      },
+      {
+        "mcc_name": "Miscellaneous Food Stores - Convenience Stores, Markets, Specialty Stores, & Vending Machines",
+        "mcc_code": "5499"
+      }
+    ]
+  },
+  {
+    "group": "Group 5 Petrol (0.30)",
+    "mccs": [
+      {
+        "mcc_name": "Fuels Dispenser, Automated",
+        "mcc_code": "5542"
+      }
+    ]
+  },
+  {
+    "group": "Group 3 Donation",
+    "mccs": [
+      {
+        "mcc_name": "ORGANIZATIONS RELIGIOUS (Organizations, Charitable and Social Service)",
+        "mcc_code": "8398"
+      }
+    ]
+  }
+]

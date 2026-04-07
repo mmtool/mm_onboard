@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface2: #f1f5f9;
+  --color-border: #e2e8f0;
+  --color-border2: #cbd5e1;
+  --color-accent: #2563eb;
+  --color-accent2: #3b82f6;
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+  --color-text: #0f172a;
+  --color-text2: #475569;
+  --color-text3: #94a3b8;
+  
+  --radius-lg: 12px;
+  --radius-sm: 6px;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-text font-sans antialiased;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply flex-1 p-3.5 rounded-sm font-sans text-sm font-semibold cursor-pointer border-none transition-all duration-200 tracking-wide;
+  }
+  .btn-ghost {
+    @apply bg-surface2 text-text2 border border-border hover:border-border2 hover:text-text;
+  }
+  .btn-primary {
+    @apply bg-accent text-white shadow-[0_4px_16px_rgba(61,126,255,0.35)] hover:bg-accent2 active:scale-98;
+  }
+  .btn-success {
+    @apply bg-success text-white;
+  }
+}
+

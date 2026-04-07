@@ -1,0 +1,5 @@
+{
+  "name": "Merchant Onboarding",
+  "description": "A comprehensive merchant onboarding system with Supabase integration, multi-step forms, and document management.",
+  "requestFramePermissions": ["geolocation"]
+}

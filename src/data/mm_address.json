@@ -1,0 +1,3341 @@
+[
+  {
+    "region_code": "MMR001",
+    "region_name": "Kachin (ကချင်ပြည်နယ်)",
+    "townships": [
+      {
+        "township_code": "MMR001005",
+        "township_name": "Chipwi (ချီ​ဖွေ)",
+        "city_en": "Myitkyina",
+        "city_mm": "မြစ်ကြီးနား",
+        "district_code": "MMR001D001",
+        "district_name": "Myitkyina",
+        "postal_code": "01071"
+      },
+      {
+        "township_code": "MMR001001",
+        "township_name": "Myitkyina (မြစ်ကြီးနား)",
+        "city_en": "Myitkyina",
+        "city_mm": "မြစ်ကြီးနား",
+        "district_code": "MMR001D001",
+        "district_name": "Myitkyina",
+        "postal_code": "01011"
+      },
+      {
+        "township_code": "MMR001011",
+        "township_name": "Shwegu (ရွှေကူ)",
+        "city_en": "Myitkyina",
+        "city_mm": "မြစ်ကြီးနား",
+        "district_code": "MMR001D003",
+        "district_name": "Bhamo",
+        "postal_code": "01121"
+      },
+      {
+        "township_code": "MMR001002",
+        "township_name": "Waingmaw (ဝိုင်းမော်)",
+        "city_en": "Myitkyina",
+        "city_mm": "မြစ်ကြီးနား",
+        "district_code": "MMR001D001",
+        "district_name": "Myitkyina",
+        "postal_code": "01081"
+      },
+      {
+        "township_code": "MMR001013",
+        "township_name": "Mansi (မံစီ)",
+        "city_en": "Myitkyina",
+        "city_mm": "မြစ်ကြီးနား",
+        "district_code": "MMR001D003",
+        "district_name": "Bhamo",
+        "postal_code": "01141"
+      },
+      {
+        "township_code": "MMR001015",
+        "township_name": "Sumprabum (ဆွမ်ပရာဘွမ်)",
+        "city_en": "Myitkyina",
+        "city_mm": "မြစ်ကြီးနား",
+        "district_code": "MMR001D004",
+        "district_name": "Puta-O",
+        "postal_code": "01061"
+      },
+      {
+        "township_code": "MMR001003",
+        "township_name": "Injangyang (အင်ဂျန်းယန်)",
+        "city_en": "Myitkyina",
+        "city_mm": "မြစ်ကြီးနား",
+        "district_code": "MMR001D001",
+        "district_name": "Myitkyina",
+        "postal_code": "01201"
+      },
+      {
+        "township_code": "MMR001009",
+        "township_name": "Hpakant (ဖားကန့်)",
+        "city_en": "Myitkyina",
+        "city_mm": "မြစ်ကြီးနား",
+        "district_code": "MMR001D002",
+        "district_name": "Mohnyin",
+        "postal_code": "01161"
+      },
+      {
+        "township_code": "MMR001014",
+        "township_name": "Puta-O (ပူတာအို)",
+        "city_en": "Myitkyina",
+        "city_mm": "မြစ်ကြီးနား",
+        "district_code": "MMR001D004",
+        "district_name": "Puta-O",
+        "postal_code": "01051"
+      },
+      {
+        "township_code": "MMR001017",
+        "township_name": "Nawngmun (နောင်မွန်း)",
+        "city_en": "Myitkyina",
+        "city_mm": "မြစ်ကြီးနား",
+        "district_code": "MMR001D004",
+        "district_name": "Puta-O",
+        "postal_code": "01031"
+      },
+      {
+        "township_code": "MMR001004",
+        "township_name": "Tanai (တနိုင်း)",
+        "city_en": "Myitkyina",
+        "city_mm": "မြစ်ကြီးနား",
+        "district_code": "MMR001D001",
+        "district_name": "Myitkyina",
+        "postal_code": "01091"
+      },
+      {
+        "township_code": "MMR001008",
+        "township_name": "Mogaung (မိုးကောင်း)",
+        "city_en": "Myitkyina",
+        "city_mm": "မြစ်ကြီးနား",
+        "district_code": "MMR001D002",
+        "district_name": "Mohnyin",
+        "postal_code": "01101"
+      },
+      {
+        "township_code": "MMR001012",
+        "township_name": "Momauk (မိုးမောက်)",
+        "city_en": "Myitkyina",
+        "city_mm": "မြစ်ကြီးနား",
+        "district_code": "MMR001D003",
+        "district_name": "Bhamo",
+        "postal_code": "01151"
+      },
+      {
+        "township_code": "MMR001018",
+        "township_name": "Khaunglanhpu (ခေါင်လန်ဖူး)",
+        "city_en": "Myitkyina",
+        "city_mm": "မြစ်ကြီးနား",
+        "district_code": "MMR001D004",
+        "district_name": "Puta-O",
+        "postal_code": "01181"
+      },
+      {
+        "township_code": "MMR001007",
+        "township_name": "Mohnyin (မိုးညှင်း)",
+        "city_en": "Myitkyina",
+        "city_mm": "မြစ်ကြီးနား",
+        "district_code": "MMR001D002",
+        "district_name": "Mohnyin",
+        "postal_code": "01111"
+      },
+      {
+        "township_code": "MMR001010",
+        "township_name": "Bhamo (ဗန်းမော်)",
+        "city_en": "Myitkyina",
+        "city_mm": "မြစ်ကြီးနား",
+        "district_code": "MMR001D003",
+        "district_name": "Bhamo",
+        "postal_code": "01131"
+      },
+      {
+        "township_code": "MMR001016",
+        "township_name": "Machanbaw (မချမ်းဘော)",
+        "city_en": "Myitkyina",
+        "city_mm": "မြစ်ကြီးနား",
+        "district_code": "MMR001D004",
+        "district_name": "Puta-O",
+        "postal_code": "01041"
+      },
+      {
+        "township_code": "MMR001006",
+        "township_name": "Tsawlaw (ဆော့လော်)",
+        "city_en": "Myitkyina",
+        "city_mm": "မြစ်ကြီးနား",
+        "district_code": "MMR001D001",
+        "district_name": "Myitkyina",
+        "postal_code": "01171"
+      }
+    ]
+  },
+  {
+    "region_code": "MMR003",
+    "region_name": "Kayin (ကရင်ပြည်နယ်)",
+    "townships": [
+      {
+        "township_code": "MMR003007",
+        "township_name": "Kyainseikgyi (ကြာအင်းဆိပ်ကြီး)",
+        "city_en": "Hpa-An",
+        "city_mm": "ဘားအံ",
+        "district_code": "MMR003D003",
+        "district_name": "Kawkareik",
+        "postal_code": "13071"
+      },
+      {
+        "township_code": "MMR003005",
+        "township_name": "Myawaddy (မြဝတီ)",
+        "city_en": "Hpa-An",
+        "city_mm": "ဘားအံ",
+        "district_code": "MMR003D002",
+        "district_name": "Myawaddy",
+        "postal_code": "13051"
+      },
+      {
+        "township_code": "MMR003001",
+        "township_name": "Hpa-An (ဘားအံ)",
+        "city_en": "Hpa-An",
+        "city_mm": "ဘားအံ",
+        "district_code": "MMR003D001",
+        "district_name": "Hpa-An",
+        "postal_code": "13011"
+      },
+      {
+        "township_code": "MMR003002",
+        "township_name": "Hlaingbwe (လှိုင်းဘွဲ့)",
+        "city_en": "Hpa-An",
+        "city_mm": "ဘားအံ",
+        "district_code": "MMR003D001",
+        "district_name": "Hpa-An",
+        "postal_code": "13041"
+      },
+      {
+        "township_code": "MMR003003",
+        "township_name": "Hpapun (ဖာပွန်)",
+        "city_en": "Hpa-An",
+        "city_mm": "ဘားအံ",
+        "district_code": "MMR003D004",
+        "district_name": "Hpapun",
+        "postal_code": "13031"
+      },
+      {
+        "township_code": "MMR003006",
+        "township_name": "Kawkareik (ကော့ကရိတ်)",
+        "city_en": "Hpa-An",
+        "city_mm": "ဘားအံ",
+        "district_code": "MMR003D003",
+        "district_name": "Kawkareik",
+        "postal_code": "13061"
+      },
+      {
+        "township_code": "MMR003004",
+        "township_name": "Thandaunggyi (သံတောင်ကြီး)",
+        "city_en": "Hpa-An",
+        "city_mm": "ဘားအံ",
+        "district_code": "MMR003D001",
+        "district_name": "Hpa-An",
+        "postal_code": "13021"
+      }
+    ]
+  },
+  {
+    "region_code": "MMR005",
+    "region_name": "Sagaing (စစ်ကိုင်းတိုင်းဒေသကြီး)",
+    "townships": [
+      {
+        "township_code": "MMR005033",
+        "township_name": "Hkamti (ခန္တီး)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D008",
+        "district_name": "Hkamti",
+        "postal_code": "02011"
+      },
+      {
+        "township_code": "MMR005002",
+        "township_name": "Myinmu (မြင်းမူ)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D001",
+        "district_name": "Sagaing",
+        "postal_code": "02341"
+      },
+      {
+        "township_code": "MMR005021",
+        "township_name": "Indaw (အင်းတော်)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D004",
+        "district_name": "Katha",
+        "postal_code": "02141"
+      },
+      {
+        "township_code": "MMR005029",
+        "township_name": "Mingin (မင်းကင်း)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D005",
+        "district_name": "Kale",
+        "postal_code": "02111"
+      },
+      {
+        "township_code": "MMR005035",
+        "township_name": "Lay Shi (လေရှီး)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005S001",
+        "district_name": "Naga Self-Administered Zone",
+        "postal_code": "02142"
+      },
+      {
+        "township_code": "MMR005003",
+        "township_name": "Myaung (မြောင်)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D001",
+        "district_name": "Sagaing",
+        "postal_code": "02381"
+      },
+      {
+        "township_code": "MMR005007",
+        "township_name": "Kanbalu (ကန့်ဘလူ)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D010",
+        "district_name": "Kanbalu",
+        "postal_code": "02211"
+      },
+      {
+        "township_code": "MMR005001",
+        "township_name": "Sagaing (စစ်ကိုင်း)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D001",
+        "district_name": "Sagaing",
+        "postal_code": "02371"
+      },
+      {
+        "township_code": "MMR005005",
+        "township_name": "Khin-U (ခင်ဦး)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D002",
+        "district_name": "Shwebo",
+        "postal_code": "02231"
+      },
+      {
+        "township_code": "MMR005036",
+        "township_name": "Lahe (လဟယ်)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005S001",
+        "district_name": "Naga Self-Administered Zone",
+        "postal_code": "02022"
+      },
+      {
+        "township_code": "MMR005014",
+        "township_name": "Ayadaw (အရာတော်)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D003",
+        "district_name": "Monywa",
+        "postal_code": "02291"
+      },
+      {
+        "township_code": "MMR005016",
+        "township_name": "Yinmarbin (ယင်းမာပင်)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D009",
+        "district_name": "Yinmarbin",
+        "postal_code": "02311"
+      },
+      {
+        "township_code": "MMR005006",
+        "township_name": "Wetlet (ဝက်လက်)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D002",
+        "district_name": "Shwebo",
+        "postal_code": "02281"
+      },
+      {
+        "township_code": "MMR005011",
+        "township_name": "Taze (တန့်ဆည်)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D002",
+        "district_name": "Shwebo",
+        "postal_code": "02221"
+      },
+      {
+        "township_code": "MMR005022",
+        "township_name": "Tigyaing (ထီးချိုင့်)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D004",
+        "district_name": "Katha",
+        "postal_code": "02191"
+      },
+      {
+        "township_code": "MMR005023",
+        "township_name": "Banmauk (ဗန်းမောက်)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D004",
+        "district_name": "Katha",
+        "postal_code": "02131"
+      },
+      {
+        "township_code": "MMR005012",
+        "township_name": "Monywa (မုံရွာ)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D003",
+        "district_name": "Monywa",
+        "postal_code": "02301"
+      },
+      {
+        "township_code": "MMR005032",
+        "township_name": "Paungbyin (ဖောင်းပြင်)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D007",
+        "district_name": "Mawlaik",
+        "postal_code": "02061"
+      },
+      {
+        "township_code": "MMR005008",
+        "township_name": "Kyunhla (ကျွန်းလှ)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D010",
+        "district_name": "Kanbalu",
+        "postal_code": "02201"
+      },
+      {
+        "township_code": "MMR005015",
+        "township_name": "Chaung-U (ချောင်းဦး)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D003",
+        "district_name": "Monywa",
+        "postal_code": "02331"
+      },
+      {
+        "township_code": "MMR005034",
+        "township_name": "Homalin (ဟုမ္မလင်း)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D008",
+        "district_name": "Hkamti",
+        "postal_code": "02051"
+      },
+      {
+        "township_code": "MMR005025",
+        "township_name": "Wuntho (ဝန်းသို)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D011",
+        "district_name": "Kawlin",
+        "postal_code": "02171"
+      },
+      {
+        "township_code": "MMR005009",
+        "township_name": "Ye-U (ရေဦး)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D002",
+        "district_name": "Shwebo",
+        "postal_code": "02241"
+      },
+      {
+        "township_code": "MMR005027",
+        "township_name": "Kale (ကလေး)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D005",
+        "district_name": "Kale",
+        "postal_code": "02091"
+      },
+      {
+        "township_code": "MMR005017",
+        "township_name": "Kani (ကနီ)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D009",
+        "district_name": "Yinmarbin",
+        "postal_code": "02121"
+      },
+      {
+        "township_code": "MMR005026",
+        "township_name": "Pinlebu (ပင်လည်ဘူး)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D011",
+        "district_name": "Kawlin",
+        "postal_code": "02161"
+      },
+      {
+        "township_code": "MMR005031",
+        "township_name": "Mawlaik (မော်လိုက်)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D007",
+        "district_name": "Mawlaik",
+        "postal_code": "02081"
+      },
+      {
+        "township_code": "MMR005018",
+        "township_name": "Salingyi (ဆားလင်းကြီး)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D009",
+        "district_name": "Yinmarbin",
+        "postal_code": "02321"
+      },
+      {
+        "township_code": "MMR005004",
+        "township_name": "Shwebo (ရွှေဘို)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D002",
+        "district_name": "Shwebo",
+        "postal_code": "02261"
+      },
+      {
+        "township_code": "MMR005010",
+        "township_name": "Tabayin (ဒီပဲယင်း)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D002",
+        "district_name": "Shwebo",
+        "postal_code": "02251"
+      },
+      {
+        "township_code": "MMR005020",
+        "township_name": "Katha (ကသာ)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D004",
+        "district_name": "Katha",
+        "postal_code": "02151"
+      },
+      {
+        "township_code": "MMR005030",
+        "township_name": "Tamu (တမူး)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D006",
+        "district_name": "Tamu",
+        "postal_code": "02071"
+      },
+      {
+        "township_code": "MMR005037",
+        "township_name": "Nanyun (နန်းယွန်း)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005S001",
+        "district_name": "Naga Self-Administered Zone",
+        "postal_code": "02012"
+      },
+      {
+        "township_code": "MMR005028",
+        "township_name": "Kalewa (ကလေးဝ)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D005",
+        "district_name": "Kale",
+        "postal_code": "02101"
+      },
+      {
+        "township_code": "MMR005013",
+        "township_name": "Budalin (ဘုတလင်)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D003",
+        "district_name": "Monywa",
+        "postal_code": "02271"
+      },
+      {
+        "township_code": "MMR005019",
+        "township_name": "Pale (ပုလဲ)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D009",
+        "district_name": "Yinmarbin",
+        "postal_code": "02351"
+      },
+      {
+        "township_code": "MMR005024",
+        "township_name": "Kawlin (ကောလင်း)",
+        "city_en": "Monywa",
+        "city_mm": "မုံရွာ",
+        "district_code": "MMR005D011",
+        "district_name": "Kawlin",
+        "postal_code": "02181"
+      }
+    ]
+  },
+  {
+    "region_code": "MMR006",
+    "region_name": "Tanintharyi (တနင်္သာရီတိုင်းဒေသကြီး)",
+    "townships": [
+      {
+        "township_code": "MMR006006",
+        "township_name": "Kyunsu (ကျွန်းစု)",
+        "city_en": "Dawei",
+        "city_mm": "ထားဝယ်",
+        "district_code": "MMR006D002",
+        "district_name": "Myeik",
+        "postal_code": "14101"
+      },
+      {
+        "township_code": "MMR006008",
+        "township_name": "Tanintharyi (တနင်္သာရီ)",
+        "city_en": "Dawei",
+        "city_mm": "ထားဝယ်",
+        "district_code": "MMR006D002",
+        "district_name": "Myeik",
+        "postal_code": "14071"
+      },
+      {
+        "township_code": "MMR006005",
+        "township_name": "Myeik (မြိတ်)",
+        "city_en": "Dawei",
+        "city_mm": "ထားဝယ်",
+        "district_code": "MMR006D002",
+        "district_name": "Myeik",
+        "postal_code": "14051"
+      },
+      {
+        "township_code": "MMR006003",
+        "township_name": "Thayetchaung (သရက်ချောင်း)",
+        "city_en": "Dawei",
+        "city_mm": "ထားဝယ်",
+        "district_code": "MMR006D001",
+        "district_name": "Dawei",
+        "postal_code": "14031"
+      },
+      {
+        "township_code": "MMR006007",
+        "township_name": "Palaw (ပုလော)",
+        "city_en": "Dawei",
+        "city_mm": "ထားဝယ်",
+        "district_code": "MMR006D002",
+        "district_name": "Myeik",
+        "postal_code": "14062"
+      },
+      {
+        "township_code": "MMR006001",
+        "township_name": "Dawei (ထားဝယ်)",
+        "city_en": "Dawei",
+        "city_mm": "ထားဝယ်",
+        "district_code": "MMR006D001",
+        "district_name": "Dawei",
+        "postal_code": "14011"
+      },
+      {
+        "township_code": "MMR006009",
+        "township_name": "Kawthoung (ကော့သောင်း)",
+        "city_en": "Dawei",
+        "city_mm": "ထားဝယ်",
+        "district_code": "MMR006D003",
+        "district_name": "Kawthoung",
+        "postal_code": "14091"
+      },
+      {
+        "township_code": "MMR006004",
+        "township_name": "Yebyu (ရေဖြူ)",
+        "city_en": "Dawei",
+        "city_mm": "ထားဝယ်",
+        "district_code": "MMR006D001",
+        "district_name": "Dawei",
+        "postal_code": "14021"
+      },
+      {
+        "township_code": "MMR006010",
+        "township_name": "Bokpyin (ဘုတ်ပြင်း)",
+        "city_en": "Dawei",
+        "city_mm": "ထားဝယ်",
+        "district_code": "MMR006D003",
+        "district_name": "Kawthoung",
+        "postal_code": "14081"
+      },
+      {
+        "township_code": "MMR006002",
+        "township_name": "Launglon (လောင်းလုံး)",
+        "city_en": "Dawei",
+        "city_mm": "ထားဝယ်",
+        "district_code": "MMR006D001",
+        "district_name": "Dawei",
+        "postal_code": "14041"
+      }
+    ]
+  },
+  {
+    "region_code": "MMR004",
+    "region_name": "Chin (ချင်းပြည်နယ်)",
+    "townships": [
+      {
+        "township_code": "MMR004003",
+        "township_name": "Thantlang (ထန်တလန်)",
+        "city_en": "Hakha",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR004D003",
+        "district_name": "Hakha",
+        "postal_code": "03021"
+      },
+      {
+        "township_code": "MMR004005",
+        "township_name": "Tonzang (တွန်းဇန်)",
+        "city_en": "Hakha",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR004D001",
+        "district_name": "Falam",
+        "postal_code": "03051"
+      },
+      {
+        "township_code": "MMR004004",
+        "township_name": "Tedim (တီးတိန်)",
+        "city_en": "Hakha",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR004D001",
+        "district_name": "Falam",
+        "postal_code": "03041"
+      },
+      {
+        "township_code": "MMR004006",
+        "township_name": "Mindat (မင်းတပ်)",
+        "city_en": "Hakha",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR004D002",
+        "district_name": "Mindat",
+        "postal_code": "03071"
+      },
+      {
+        "township_code": "MMR004002",
+        "township_name": "Hakha (ဟားခါး)",
+        "city_en": "Hakha",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR004D003",
+        "district_name": "Hakha",
+        "postal_code": "03011"
+      },
+      {
+        "township_code": "MMR004009",
+        "township_name": "Paletwa (ပလက်ဝ)",
+        "city_en": "Hakha",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR004D004",
+        "district_name": "Matupi",
+        "postal_code": "07071"
+      },
+      {
+        "township_code": "MMR004007",
+        "township_name": "Matupi (မတူပီ)",
+        "city_en": "Hakha",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR004D004",
+        "district_name": "Matupi",
+        "postal_code": "03061"
+      },
+      {
+        "township_code": "MMR004008",
+        "township_name": "Kanpetlet (ကန်ပက်လက်)",
+        "city_en": "Hakha",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR004D002",
+        "district_name": "Mindat",
+        "postal_code": "03081"
+      },
+      {
+        "township_code": "MMR004001",
+        "township_name": "Falam (ဖလမ်း)",
+        "city_en": "Hakha",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR004D001",
+        "district_name": "Falam",
+        "postal_code": "03031"
+      }
+    ]
+  },
+  {
+    "region_code": "MMR002",
+    "region_name": "Kayah (ကယားပြည်နယ်)",
+    "townships": [
+      {
+        "township_code": "MMR002002",
+        "township_name": "Demoso (ဒီးမော့ဆို)",
+        "city_en": "Loikaw",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR002D001",
+        "district_name": "Loikaw",
+        "postal_code": "09021"
+      },
+      {
+        "township_code": "MMR002004",
+        "township_name": "Shadaw (ရှားတော)",
+        "city_en": "Loikaw",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR002D001",
+        "district_name": "Loikaw",
+        "postal_code": "09071"
+      },
+      {
+        "township_code": "MMR002007",
+        "township_name": "Mese (မယ်စဲ)",
+        "city_en": "Loikaw",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR002D002",
+        "district_name": "Bawlake",
+        "postal_code": "09061"
+      },
+      {
+        "township_code": "MMR002003",
+        "township_name": "Hpruso (ဖရူဆို)",
+        "city_en": "Loikaw",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR002D001",
+        "district_name": "Loikaw",
+        "postal_code": "09031"
+      },
+      {
+        "township_code": "MMR002001",
+        "township_name": "Loikaw (လွိုင်ကော်)",
+        "city_en": "Loikaw",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR002D001",
+        "district_name": "Loikaw",
+        "postal_code": "09011"
+      },
+      {
+        "township_code": "MMR002006",
+        "township_name": "Hpasawng (ဖားဆောင်း)",
+        "city_en": "Loikaw",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR002D002",
+        "district_name": "Bawlake",
+        "postal_code": "09051"
+      },
+      {
+        "township_code": "MMR002005",
+        "township_name": "Bawlake (ဘောလခဲ)",
+        "city_en": "Loikaw",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR002D002",
+        "district_name": "Bawlake",
+        "postal_code": "09041"
+      }
+    ]
+  },
+  {
+    "region_code": "MMR007",
+    "region_name": "Bago (East) (ပဲခူးတိုင်းဒေသကြီး (အရှေ့))",
+    "townships": [
+      {
+        "township_code": "MMR007002",
+        "township_name": "Thanatpin (သနပ်ပင်)",
+        "city_en": "Bago",
+        "city_mm": "ပဲခူး",
+        "district_code": "MMR007D001",
+        "district_name": "Bago",
+        "postal_code": "08081"
+      },
+      {
+        "township_code": "MMR007006",
+        "township_name": "Kyauktaga (ကျောက်တံခါး)",
+        "city_en": "Bago",
+        "city_mm": "ပဲခူး",
+        "district_code": "MMR007D001",
+        "district_name": "Bago",
+        "postal_code": "08021"
+      },
+      {
+        "township_code": "MMR007005",
+        "township_name": "Nyaunglebin (ညောင်လေးပင်)",
+        "city_en": "Bago",
+        "city_mm": "ပဲခူး",
+        "district_code": "MMR007D001",
+        "district_name": "Bago",
+        "postal_code": "08031"
+      },
+      {
+        "township_code": "MMR007001",
+        "township_name": "Bago (ပဲခူး)",
+        "city_en": "Bago",
+        "city_mm": "ပဲခူး",
+        "district_code": "MMR007D001",
+        "district_name": "Bago",
+        "postal_code": "08011"
+      },
+      {
+        "township_code": "MMR007004",
+        "township_name": "Waw (ဝေါ)",
+        "city_en": "Bago",
+        "city_mm": "ပဲခူး",
+        "district_code": "MMR007D001",
+        "district_name": "Bago",
+        "postal_code": "08071"
+      },
+      {
+        "township_code": "MMR007007",
+        "township_name": "Daik-U (ဒိုက်ဦး)",
+        "city_en": "Bago",
+        "city_mm": "ပဲခူး",
+        "district_code": "MMR007D001",
+        "district_name": "Bago",
+        "postal_code": "08061"
+      },
+      {
+        "township_code": "MMR007008",
+        "township_name": "Shwegyin (ရွှေကျင်)",
+        "city_en": "Bago",
+        "city_mm": "ပဲခူး",
+        "district_code": "MMR007D001",
+        "district_name": "Bago",
+        "postal_code": "08033"
+      },
+      {
+        "township_code": "MMR007009",
+        "township_name": "Taungoo (တောင်ငူ)",
+        "city_en": "Bago",
+        "city_mm": "ပဲခူး",
+        "district_code": "MMR007D002",
+        "district_name": "Taungoo",
+        "postal_code": "08101"
+      },
+      {
+        "township_code": "MMR007003",
+        "township_name": "Kawa (ကဝ)",
+        "city_en": "Bago",
+        "city_mm": "ပဲခူး",
+        "district_code": "MMR007D001",
+        "district_name": "Bago",
+        "postal_code": "08091"
+      },
+      {
+        "township_code": "MMR007010",
+        "township_name": "Yedashe (ရေတာရှည်)",
+        "city_en": "Bago",
+        "city_mm": "ပဲခူး",
+        "district_code": "MMR007D002",
+        "district_name": "Taungoo",
+        "postal_code": "08111"
+      },
+      {
+        "township_code": "MMR007011",
+        "township_name": "Kyaukkyi (ကျောက်ကြီး)",
+        "city_en": "Bago",
+        "city_mm": "ပဲခူး",
+        "district_code": "MMR007D002",
+        "district_name": "Taungoo",
+        "postal_code": "08041"
+      },
+      {
+        "township_code": "MMR007013",
+        "township_name": "Oktwin (အုတ်တွင်း)",
+        "city_en": "Bago",
+        "city_mm": "ပဲခူး",
+        "district_code": "MMR007D002",
+        "district_name": "Taungoo",
+        "postal_code": "08121"
+      },
+      {
+        "township_code": "MMR007012",
+        "township_name": "Phyu (ဖြူး)",
+        "city_en": "Bago",
+        "city_mm": "ပဲခူး",
+        "district_code": "MMR007D002",
+        "district_name": "Taungoo",
+        "postal_code": "08141"
+      },
+      {
+        "township_code": "MMR007014",
+        "township_name": "Htantabin (ထန်းတပင်)",
+        "city_en": "Bago",
+        "city_mm": "ပဲခူး",
+        "district_code": "MMR007D002",
+        "district_name": "Taungoo",
+        "postal_code": "08131"
+      },
+      {
+        "township_code": "MMR007009",
+        "township_name": "Inntakaw",
+        "city_en": "Bago",
+        "city_mm": "ပဲခူး",
+        "district_code": "MMR007D001",
+        "district_name": "Bago",
+        "postal_code": "08101"
+      }
+    ]
+  },
+  {
+    "region_code": "MMR008",
+    "region_name": "Bago (West) (ပဲခူးတိုင်းဒေသကြီး (အနောက်))",
+    "townships": [
+      {
+        "township_code": "MMR008001",
+        "township_name": "Pyay (ပြည်)",
+        "city_en": "Pyay",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR008D001",
+        "district_name": "Pyay",
+        "postal_code": "08151"
+      },
+      {
+        "township_code": "MMR008005",
+        "township_name": "Thegon (သဲကုန်း)",
+        "city_en": "Pyay",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR008D001",
+        "district_name": "Pyay",
+        "postal_code": "08191"
+      },
+      {
+        "township_code": "MMR008002",
+        "township_name": "Paukkhaung (ပေါက်ခေါင်း)",
+        "city_en": "Pyay",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR008D001",
+        "district_name": "Pyay",
+        "postal_code": "08161"
+      },
+      {
+        "township_code": "MMR008007",
+        "township_name": "Thayarwady (သာယာဝတီ)",
+        "city_en": "Pyay",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR008D002",
+        "district_name": "Thayarwady",
+        "postal_code": "08232"
+      },
+      {
+        "township_code": "MMR008012",
+        "township_name": "Nattalin (နတ်တလင်း)",
+        "city_en": "Pyay",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR008D002",
+        "district_name": "Thayarwady",
+        "postal_code": "08211"
+      },
+      {
+        "township_code": "MMR008006",
+        "township_name": "Shwedaung (ရွှေတောင်)",
+        "city_en": "Pyay",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR008D001",
+        "district_name": "Pyay",
+        "postal_code": "08181"
+      },
+      {
+        "township_code": "MMR008009",
+        "township_name": "Minhla (မင်းလှ)",
+        "city_en": "Pyay",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR008D002",
+        "district_name": "Thayarwady",
+        "postal_code": "04071"
+      },
+      {
+        "township_code": "MMR008014",
+        "township_name": "Gyobingauk (ကြို့ပင်ကောက်)",
+        "city_en": "Pyay",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR008D002",
+        "district_name": "Thayarwady",
+        "postal_code": "08231"
+      },
+      {
+        "township_code": "MMR008003",
+        "township_name": "Padaung (ပန်းတောင်း)",
+        "city_en": "Pyay",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR008D001",
+        "district_name": "Pyay",
+        "postal_code": "08171"
+      },
+      {
+        "township_code": "MMR008008",
+        "township_name": "Letpadan (လက်ပံတန်း)",
+        "city_en": "Pyay",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR008D002",
+        "district_name": "Thayarwady",
+        "postal_code": "08271"
+      },
+      {
+        "township_code": "MMR008010",
+        "township_name": "Okpho (အုတ်ဖို)",
+        "city_en": "Pyay",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR008D002",
+        "district_name": "Thayarwady",
+        "postal_code": "08251"
+      },
+      {
+        "township_code": "MMR008013",
+        "township_name": "Monyo (မိုးညို)",
+        "city_en": "Pyay",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR008D002",
+        "district_name": "Thayarwady",
+        "postal_code": "08241"
+      },
+      {
+        "township_code": "MMR008004",
+        "township_name": "Paungde (ပေါင်းတည်)",
+        "city_en": "Pyay",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR008D001",
+        "district_name": "Pyay",
+        "postal_code": "08201"
+      },
+      {
+        "township_code": "MMR008011",
+        "township_name": "Zigon (ဇီးကုန်း)",
+        "city_en": "Pyay",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR008D002",
+        "district_name": "Thayarwady",
+        "postal_code": "08221"
+      }
+    ]
+  },
+  {
+    "region_code": "MMR009",
+    "region_name": "Magway (မကွေးတိုင်းဒေသကြီး)",
+    "townships": [
+      {
+        "township_code": "MMR009001",
+        "township_name": "Magway (မကွေး)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D001",
+        "district_name": "Magway",
+        "postal_code": "04011"
+      },
+      {
+        "township_code": "MMR009002",
+        "township_name": "Yenangyaung (ရေနံချောင်း)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D001",
+        "district_name": "Magway",
+        "postal_code": "04161"
+      },
+      {
+        "township_code": "MMR009003",
+        "township_name": "Chauk (ချောက်)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D001",
+        "district_name": "Magway",
+        "postal_code": "04171"
+      },
+      {
+        "township_code": "MMR009017",
+        "township_name": "Sinbaungwe (ဆင်ပေါင်ဝဲ)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D003",
+        "district_name": "Thayet",
+        "postal_code": "04081"
+      },
+      {
+        "township_code": "MMR009016",
+        "township_name": "Aunglan (အောင်လံ)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D003",
+        "district_name": "Thayet",
+        "postal_code": "04151"
+      },
+      {
+        "township_code": "MMR009006",
+        "township_name": "Natmauk (နတ်မောက်)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D001",
+        "district_name": "Magway",
+        "postal_code": "04121"
+      },
+      {
+        "township_code": "MMR009012",
+        "township_name": "Thayet (သရက်)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D003",
+        "district_name": "Thayet",
+        "postal_code": "04091"
+      },
+      {
+        "township_code": "MMR009011",
+        "township_name": "Sidoktaya (စေတုတ္ထရာ)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D002",
+        "district_name": "Minbu",
+        "postal_code": "04051"
+      },
+      {
+        "township_code": "MMR009015",
+        "township_name": "Kamma (ကံမ)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D003",
+        "district_name": "Thayet",
+        "postal_code": "04111"
+      },
+      {
+        "township_code": "MMR009013",
+        "township_name": "Minhla (မင်းလှ)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D003",
+        "district_name": "Thayet",
+        "postal_code": "04071"
+      },
+      {
+        "township_code": "MMR009018",
+        "township_name": "Pakokku (ပခုက္ကူ)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D004",
+        "district_name": "Pakokku",
+        "postal_code": "04201"
+      },
+      {
+        "township_code": "MMR009004",
+        "township_name": "Taungdwingyi (တောင်တွင်းကြီး)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D001",
+        "district_name": "Magway",
+        "postal_code": "04141"
+      },
+      {
+        "township_code": "MMR009008",
+        "township_name": "Pwintbyu (ပွင့်ဖြူ)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D002",
+        "district_name": "Minbu",
+        "postal_code": "04031"
+      },
+      {
+        "township_code": "MMR009009",
+        "township_name": "Ngape (ငဖဲ)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D002",
+        "district_name": "Minbu",
+        "postal_code": "04061"
+      },
+      {
+        "township_code": "MMR009020",
+        "township_name": "Myaing (မြိုင်)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D004",
+        "district_name": "Pakokku",
+        "postal_code": "04191"
+      },
+      {
+        "township_code": "MMR009014",
+        "township_name": "Mindon (မင်းတုန်း)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D003",
+        "district_name": "Thayet",
+        "postal_code": "04101"
+      },
+      {
+        "township_code": "MMR009005",
+        "township_name": "Myothit (မြို့သစ်)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D001",
+        "district_name": "Magway",
+        "postal_code": "04131"
+      },
+      {
+        "township_code": "MMR009007",
+        "township_name": "Minbu (မင်းဘူး)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D002",
+        "district_name": "Minbu",
+        "postal_code": "04021"
+      },
+      {
+        "township_code": "MMR009010",
+        "township_name": "Salin (စလင်း)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D002",
+        "district_name": "Minbu",
+        "postal_code": "04041"
+      },
+      {
+        "township_code": "MMR009019",
+        "township_name": "Yesagyo (ရေစကြို)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D004",
+        "district_name": "Pakokku",
+        "postal_code": "04181"
+      },
+      {
+        "township_code": "MMR009024",
+        "township_name": "Tilin (ထီးလင်း)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D005",
+        "district_name": "Gangaw",
+        "postal_code": "04221"
+      },
+      {
+        "township_code": "MMR009022",
+        "township_name": "Seikphyu (ဆိပ်ဖြူ)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D004",
+        "district_name": "Pakokku",
+        "postal_code": "04251"
+      },
+      {
+        "township_code": "MMR009025",
+        "township_name": "Saw (ဆော)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D005",
+        "district_name": "Gangaw",
+        "postal_code": "04241"
+      },
+      {
+        "township_code": "MMR009021",
+        "township_name": "Pauk (ပေါက်)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D004",
+        "district_name": "Pakokku",
+        "postal_code": "04231"
+      },
+      {
+        "township_code": "MMR009023",
+        "township_name": "Gangaw (ဂန့်ဂေါ)",
+        "city_en": "Magway",
+        "city_mm": "မကွေး",
+        "district_code": "MMR009D005",
+        "district_name": "Gangaw",
+        "postal_code": "04211"
+      }
+    ]
+  },
+  {
+    "region_code": "MMR010",
+    "region_name": "Mandalay (မန္တလေးတိုင်းဒေသကြီး)",
+    "townships": [
+      {
+        "township_code": "MMR010003",
+        "township_name": "Mahaaungmyay (မဟာအောင်မြေ)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D001",
+        "district_name": "Mandalay",
+        "postal_code": "05031"
+      },
+      {
+        "township_code": "MMR010008",
+        "township_name": "Pyinoolwin (ပြင်ဦးလွင်)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D002",
+        "district_name": "Pyinoolwin",
+        "postal_code": "05081"
+      },
+      {
+        "township_code": "MMR010001",
+        "township_name": "Aungmyaythazan (အောင်မြေသာစံ)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D001",
+        "district_name": "Mandalay",
+        "postal_code": "05011"
+      },
+      {
+        "township_code": "MMR010002",
+        "township_name": "Chanayethazan (ချမ်းအေးသာစံ)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D001",
+        "district_name": "Mandalay",
+        "postal_code": "05021"
+      },
+      {
+        "township_code": "MMR010005",
+        "township_name": "Pyigyitagon (ပြည်ကြီးတံခွန်)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D001",
+        "district_name": "Mandalay",
+        "postal_code": "05051"
+      },
+      {
+        "township_code": "MMR010007",
+        "township_name": "Patheingyi (ပုသိမ်ကြီး)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D001",
+        "district_name": "Mandalay",
+        "postal_code": "05071"
+      },
+      {
+        "township_code": "MMR010004",
+        "township_name": "Chanmyathazi (ချမ်းမြသာစည်)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D001",
+        "district_name": "Mandalay",
+        "postal_code": "05041"
+      },
+      {
+        "township_code": "MMR010009",
+        "township_name": "Madaya (မတ္တရာ)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D002",
+        "district_name": "Pyinoolwin",
+        "postal_code": "05121"
+      },
+      {
+        "township_code": "MMR010006",
+        "township_name": "Amarapura (အမရပူရ)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D001",
+        "district_name": "Mandalay",
+        "postal_code": "05061"
+      },
+      {
+        "township_code": "MMR010010",
+        "township_name": "Singu (စဉ့်ကူး)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D002",
+        "district_name": "Pyinoolwin",
+        "postal_code": "05111"
+      },
+      {
+        "township_code": "MMR010011",
+        "township_name": "Mogoke (မိုးကုတ်)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D002",
+        "district_name": "Pyinoolwin",
+        "postal_code": "05091"
+      },
+      {
+        "township_code": "MMR010015",
+        "township_name": "Myittha (မြစ်သား)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D003",
+        "district_name": "Kyaukse",
+        "postal_code": "05161"
+      },
+      {
+        "township_code": "MMR010019",
+        "township_name": "Natogyi (နွားထိုးကြီး)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D004",
+        "district_name": "Myingyan",
+        "postal_code": "05261"
+      },
+      {
+        "township_code": "MMR010013",
+        "township_name": "Kyaukse (ကျောက်ဆည်)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D003",
+        "district_name": "Kyaukse",
+        "postal_code": "05143"
+      },
+      {
+        "township_code": "MMR010021",
+        "township_name": "Ngazun (ငါန်းဇွန်)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D004",
+        "district_name": "Myingyan",
+        "postal_code": "05281"
+      },
+      {
+        "township_code": "MMR010012",
+        "township_name": "Thabeikkyin (သပိတ်ကျင်း)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D002",
+        "district_name": "Pyinoolwin",
+        "postal_code": "05101"
+      },
+      {
+        "township_code": "MMR010017",
+        "township_name": "Myingyan (မြင်းခြံ)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D004",
+        "district_name": "Myingyan",
+        "postal_code": "05251"
+      },
+      {
+        "township_code": "MMR010016",
+        "township_name": "Tada-U (တံတားဦး)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D003",
+        "district_name": "Kyaukse",
+        "postal_code": "05131"
+      },
+      {
+        "township_code": "MMR010018",
+        "township_name": "Taungtha (တောင်သာ)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D004",
+        "district_name": "Myingyan",
+        "postal_code": "05271"
+      },
+      {
+        "township_code": "MMR010014",
+        "township_name": "Sintgaing (စဉ့်ကိုင်)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D003",
+        "district_name": "Kyaukse",
+        "postal_code": "05141"
+      },
+      {
+        "township_code": "MMR010020",
+        "township_name": "Kyaukpadaung (ကျောက်ပန်းတောင်း)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D005",
+        "district_name": "Nyaung-U",
+        "postal_code": "05241"
+      },
+      {
+        "township_code": "MMR010024",
+        "township_name": "Pyawbwe (ပျော်ဘွယ်)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D006",
+        "district_name": "Yamethin",
+        "postal_code": "05211"
+      },
+      {
+        "township_code": "MMR010022",
+        "township_name": "Nyaung-U (ညောင်ဦး)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D005",
+        "district_name": "Nyaung-U",
+        "postal_code": "05231"
+      },
+      {
+        "township_code": "MMR010031",
+        "township_name": "Wundwin (ဝမ်းတွင်း)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D007",
+        "district_name": "Meiktila",
+        "postal_code": "05171"
+      },
+      {
+        "township_code": "MMR010029",
+        "township_name": "Mahlaing (မလှိုင်)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D007",
+        "district_name": "Meiktila",
+        "postal_code": "05201"
+      },
+      {
+        "township_code": "MMR010028",
+        "township_name": "Meiktila (မိတ္ထီလာ)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D007",
+        "district_name": "Meiktila",
+        "postal_code": "05181"
+      },
+      {
+        "township_code": "MMR010030",
+        "township_name": "Thazi (သာစည်)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D007",
+        "district_name": "Meiktila",
+        "postal_code": "05191"
+      },
+      {
+        "township_code": "MMR010023",
+        "township_name": "Yamethin (ရမည်းသင်း)",
+        "city_en": "Mandalay",
+        "city_mm": "မန္တလေး",
+        "district_code": "MMR010D006",
+        "district_name": "Yamethin",
+        "postal_code": "05221"
+      }
+    ]
+  },
+  {
+    "region_code": "MMR011",
+    "region_name": "Mon (မွန်ပြည်နယ်)",
+    "townships": [
+      {
+        "township_code": "MMR011005",
+        "township_name": "Mudon (မုဒုံ)",
+        "city_en": "Mawlamyine",
+        "city_mm": "မော်လမြိုင်",
+        "district_code": "MMR011D001",
+        "district_name": "Mawlamyine",
+        "postal_code": "12081"
+      },
+      {
+        "township_code": "MMR011008",
+        "township_name": "Paung (ပေါင်)",
+        "city_en": "Mawlamyine",
+        "city_mm": "မော်လမြိုင်",
+        "district_code": "MMR011D002",
+        "district_name": "Thaton",
+        "postal_code": "12051"
+      },
+      {
+        "township_code": "MMR011003",
+        "township_name": "Chaungzon (ချောင်းဆုံ)",
+        "city_en": "Mawlamyine",
+        "city_mm": "မော်လမြိုင်",
+        "district_code": "MMR011D001",
+        "district_name": "Mawlamyine",
+        "postal_code": "12061"
+      },
+      {
+        "township_code": "MMR011001",
+        "township_name": "Mawlamyine (မော်လမြိုင်)",
+        "city_en": "Mawlamyine",
+        "city_mm": "မော်လမြိုင်",
+        "district_code": "MMR011D001",
+        "district_name": "Mawlamyine",
+        "postal_code": "12011"
+      },
+      {
+        "township_code": "MMR011002",
+        "township_name": "Kyaikmaraw (ကျိုက်မရော)",
+        "city_en": "Mawlamyine",
+        "city_mm": "မော်လမြိုင်",
+        "district_code": "MMR011D001",
+        "district_name": "Mawlamyine",
+        "postal_code": "12071"
+      },
+      {
+        "township_code": "MMR011007",
+        "township_name": "Thaton (သထုံ)",
+        "city_en": "Mawlamyine",
+        "city_mm": "မော်လမြိုင်",
+        "district_code": "MMR011D002",
+        "district_name": "Thaton",
+        "postal_code": "12041"
+      },
+      {
+        "township_code": "MMR011004",
+        "township_name": "Thanbyuzayat (သံဖြူဇရပ်)",
+        "city_en": "Mawlamyine",
+        "city_mm": "မော်လမြိုင်",
+        "district_code": "MMR011D001",
+        "district_name": "Mawlamyine",
+        "postal_code": "12091"
+      },
+      {
+        "township_code": "MMR011006",
+        "township_name": "Ye (ရေး)",
+        "city_en": "Mawlamyine",
+        "city_mm": "မော်လမြိုင်",
+        "district_code": "MMR011D001",
+        "district_name": "Mawlamyine",
+        "postal_code": "12101"
+      },
+      {
+        "township_code": "MMR011010",
+        "township_name": "Bilin (ဘီးလင်း)",
+        "city_en": "Mawlamyine",
+        "city_mm": "မော်လမြိုင်",
+        "district_code": "MMR011D002",
+        "district_name": "Thaton",
+        "postal_code": "12031"
+      },
+      {
+        "township_code": "MMR011009",
+        "township_name": "Kyaikto (ကျိုက်ထို)",
+        "city_en": "Mawlamyine",
+        "city_mm": "မော်လမြိုင်",
+        "district_code": "MMR011D002",
+        "district_name": "Thaton",
+        "postal_code": "12021"
+      }
+    ]
+  },
+  {
+    "region_code": "MMR012",
+    "region_name": "Rakhine (ရခိုင်ပြည်နယ်)",
+    "townships": [
+      {
+        "township_code": "MMR012007",
+        "township_name": "Pauktaw (ပေါက်တော)",
+        "city_en": "Sittwe",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR012D001",
+        "district_name": "Sittwe",
+        "postal_code": "07081"
+      },
+      {
+        "township_code": "MMR012011",
+        "township_name": "Kyaukpyu (ကျောက်ဖြူ)",
+        "city_en": "Sittwe",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR012D003",
+        "district_name": "Kyaukpyu",
+        "postal_code": "07121"
+      },
+      {
+        "township_code": "MMR012001",
+        "township_name": "Sittwe (စစ်တွေ)",
+        "city_en": "Sittwe",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR012D001",
+        "district_name": "Sittwe",
+        "postal_code": "07011"
+      },
+      {
+        "township_code": "MMR012008",
+        "township_name": "Rathedaung (ရသေ့တောင်)",
+        "city_en": "Sittwe",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR012D001",
+        "district_name": "Sittwe",
+        "postal_code": "07032"
+      },
+      {
+        "township_code": "MMR012010",
+        "township_name": "Buthidaung (ဘူးသီးတောင်)",
+        "city_en": "Sittwe",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR012D002",
+        "district_name": "Maungdaw",
+        "postal_code": "07031"
+      },
+      {
+        "township_code": "MMR012009",
+        "township_name": "Maungdaw (မောင်တော)",
+        "city_en": "Sittwe",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR012D002",
+        "district_name": "Maungdaw",
+        "postal_code": "07021"
+      },
+      {
+        "township_code": "MMR012013",
+        "township_name": "Ramree (ရမ်းဗြဲ)",
+        "city_en": "Sittwe",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR012D003",
+        "district_name": "Kyaukpyu",
+        "postal_code": "07131"
+      },
+      {
+        "township_code": "MMR012012",
+        "township_name": "Munaung (မာန်အောင်)",
+        "city_en": "Sittwe",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR012D003",
+        "district_name": "Kyaukpyu",
+        "postal_code": "07141"
+      },
+      {
+        "township_code": "MMR012002",
+        "township_name": "Ponnagyun (ပုဏ္ဏားကျွန်း)",
+        "city_en": "Sittwe",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR012D001",
+        "district_name": "Sittwe",
+        "postal_code": "07051"
+      },
+      {
+        "township_code": "MMR012006",
+        "township_name": "Myebon (မြေပုံ)",
+        "city_en": "Sittwe",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR012D005",
+        "district_name": "Mrauk-U",
+        "postal_code": "07111"
+      },
+      {
+        "township_code": "MMR012017",
+        "township_name": "Gwa (ဂွ)",
+        "city_en": "Sittwe",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR012D004",
+        "district_name": "Thandwe",
+        "postal_code": "07181"
+      },
+      {
+        "township_code": "MMR012014",
+        "township_name": "Ann (အမ်း)",
+        "city_en": "Sittwe",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR012D003",
+        "district_name": "Kyaukpyu",
+        "postal_code": "07151"
+      },
+      {
+        "township_code": "MMR012004",
+        "township_name": "Kyauktaw (ကျောက်တော်)",
+        "city_en": "Sittwe",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR012D005",
+        "district_name": "Mrauk-U",
+        "postal_code": "07061"
+      },
+      {
+        "township_code": "MMR012016",
+        "township_name": "Toungup (တောင်ကုတ်)",
+        "city_en": "Sittwe",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR012D004",
+        "district_name": "Thandwe",
+        "postal_code": "07161"
+      },
+      {
+        "township_code": "MMR012015",
+        "township_name": "Thandwe (သံတွဲ)",
+        "city_en": "Sittwe",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR012D004",
+        "district_name": "Thandwe",
+        "postal_code": "07171"
+      },
+      {
+        "township_code": "MMR012003",
+        "township_name": "Mrauk-U (မြောက်ဦး)",
+        "city_en": "Sittwe",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR012D005",
+        "district_name": "Mrauk-U",
+        "postal_code": "07092"
+      },
+      {
+        "township_code": "MMR012005",
+        "township_name": "Minbya (မင်းပြား)",
+        "city_en": "Sittwe",
+        "city_mm": "ဟားခါး",
+        "district_code": "MMR012D005",
+        "district_name": "Mrauk-U",
+        "postal_code": "07091"
+      }
+    ]
+  },
+  {
+    "region_code": "MMR013",
+    "region_name": "Yangon (ရန်ကုန်တိုင်းဒေသကြီး)",
+    "townships": [
+      {
+        "township_code": "MMR013002",
+        "township_name": "Mingaladon (မင်္ဂလာဒုံ)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D001",
+        "district_name": "Yangon (North)",
+        "postal_code": "11021"
+      },
+      {
+        "township_code": "MMR013001",
+        "township_name": "Insein (အင်းစိန်)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D001",
+        "district_name": "Yangon (North)",
+        "postal_code": "11011"
+      },
+      {
+        "township_code": "MMR013005",
+        "township_name": "Taikkyi (တိုက်ကြီး)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D001",
+        "district_name": "Yangon (North)",
+        "postal_code": "11131"
+      },
+      {
+        "township_code": "MMR013003",
+        "township_name": "Hmawbi (မှော်ဘီ)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D001",
+        "district_name": "Yangon (North)",
+        "postal_code": "11101"
+      },
+      {
+        "township_code": "MMR013006",
+        "township_name": "Htantabin (ထန်းတပင်)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D001",
+        "district_name": "Yangon (North)",
+        "postal_code": "08131"
+      },
+      {
+        "township_code": "MMR013004",
+        "township_name": "Hlegu (လှည်းကူး)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D001",
+        "district_name": "Yangon (North)",
+        "postal_code": "11061"
+      },
+      {
+        "township_code": "MMR013017",
+        "township_name": "Botahtaung (ဗိုလ်တထောင်)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D002",
+        "district_name": "Yangon (East)",
+        "postal_code": "11161"
+      },
+      {
+        "township_code": "MMR013013",
+        "township_name": "Thaketa (သာကေတ)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D002",
+        "district_name": "Yangon (East)",
+        "postal_code": "11231"
+      },
+      {
+        "township_code": "MMR013016",
+        "township_name": "Pazundaung (ပုဇွန်တောင်)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D002",
+        "district_name": "Yangon (East)",
+        "postal_code": "11171"
+      },
+      {
+        "township_code": "MMR013012",
+        "township_name": "North Okkalapa (မြောက်ဥက္ကလာပ)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D002",
+        "district_name": "Yangon (East)",
+        "postal_code": "11031"
+      },
+      {
+        "township_code": "MMR013008",
+        "township_name": "Hlaingtharya (လှိုင်သာယာ)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D001",
+        "district_name": "Yangon (North)",
+        "postal_code": "11401"
+      },
+      {
+        "township_code": "MMR013020",
+        "township_name": "Dagon Myothit (East) (ဒဂုံမြို့သစ် (အရှေ့ပိုင်း))",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D002",
+        "district_name": "Yangon (East)",
+        "postal_code": "11451"
+      },
+      {
+        "township_code": "MMR013007",
+        "township_name": "Shwepyithar (ရွှေပြည်သာ)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D001",
+        "district_name": "Yangon (North)",
+        "postal_code": "11411"
+      },
+      {
+        "township_code": "MMR013009",
+        "township_name": "Thingangyun (သင်္ဃန်းကျွန်း)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D002",
+        "district_name": "Yangon (East)",
+        "postal_code": "11071"
+      },
+      {
+        "township_code": "MMR013019",
+        "township_name": "Dagon Myothit (North) (ဒဂုံမြို့သစ် (မြောက်ပိုင်း))",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D002",
+        "district_name": "Yangon (East)",
+        "postal_code": "11421"
+      },
+      {
+        "township_code": "MMR013010",
+        "township_name": "Yankin (ရန်ကင်း)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D002",
+        "district_name": "Yangon (East)",
+        "postal_code": "11081"
+      },
+      {
+        "township_code": "MMR013015",
+        "township_name": "Tamwe (တာမွေ)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D002",
+        "district_name": "Yangon (East)",
+        "postal_code": "11211"
+      },
+      {
+        "township_code": "MMR013018",
+        "township_name": "Dagon Myothit (South) (ဒဂုံမြို့သစ် (တောင်ပိုင်း))",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D002",
+        "district_name": "Yangon (East)",
+        "postal_code": "11431"
+      },
+      {
+        "township_code": "MMR013047",
+        "township_name": "Hlaingtharya (West) (လှိုင်သာယာ (အနောက်ပိုင်း))",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D001",
+        "district_name": "Yangon (North)",
+        "postal_code": "11401"
+      },
+      {
+        "township_code": "MMR013011",
+        "township_name": "South Okkalapa (တောင်ဥက္ကလာပ)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D002",
+        "district_name": "Yangon (East)",
+        "postal_code": "11091"
+      },
+      {
+        "township_code": "MMR013014",
+        "township_name": "Dawbon (ဒေါပုံ)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D002",
+        "district_name": "Yangon (East)",
+        "postal_code": "11241"
+      },
+      {
+        "township_code": "MMR013046",
+        "township_name": "Hlaingtharya (East) (လှိုင်သာယာ (အရှေ့ပိုင်း))",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D001",
+        "district_name": "Yangon (North)",
+        "postal_code": "11411"
+      },
+      {
+        "township_code": "MMR013022",
+        "township_name": "Mingalartaungnyunt (မင်္ဂလာတောင်ညွန့်)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D002",
+        "district_name": "Yangon (East)",
+        "postal_code": "11221"
+      },
+      {
+        "township_code": "MMR013021",
+        "township_name": "Dagon Myothit (Seikkan) (ဒဂုံမြို့သစ် (ဆိပ်ကမ်း))",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D002",
+        "district_name": "Yangon (East)",
+        "postal_code": "11441"
+      },
+      {
+        "township_code": "MMR013036",
+        "township_name": "Latha (လသာ)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D004",
+        "district_name": "Yangon (West)",
+        "postal_code": "11141"
+      },
+      {
+        "township_code": "MMR013027",
+        "township_name": "Twantay (တွံတေး)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D003",
+        "district_name": "Yangon (South)",
+        "postal_code": "11261"
+      },
+      {
+        "township_code": "MMR013029",
+        "township_name": "Kungyangon (ကွမ်းခြံကုန်း)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D003",
+        "district_name": "Yangon (South)",
+        "postal_code": "11251"
+      },
+      {
+        "township_code": "MMR013031",
+        "township_name": "Seikgyikanaungto (ဆိပ်ကြီး/ခနောင်တို)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D003",
+        "district_name": "Yangon (South)",
+        "postal_code": "11221"
+      },
+      {
+        "township_code": "MMR013033",
+        "township_name": "Kyauktada (ကျောက်တံတား)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D004",
+        "district_name": "Yangon (West)",
+        "postal_code": "11182"
+      },
+      {
+        "township_code": "MMR013038",
+        "township_name": "Kyeemyindaing (ကြည့်မြင်တိုင်)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D004",
+        "district_name": "Yangon (West)",
+        "postal_code": "11101"
+      },
+      {
+        "township_code": "MMR013023",
+        "township_name": "Thanlyin (သန်လျင်)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D003",
+        "district_name": "Yangon (South)",
+        "postal_code": "11291"
+      },
+      {
+        "township_code": "MMR013028",
+        "township_name": "Kawhmu (ကော့မှူး)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D003",
+        "district_name": "Yangon (South)",
+        "postal_code": "11231"
+      },
+      {
+        "township_code": "MMR013035",
+        "township_name": "Lanmadaw (လမ်းမတော်)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D004",
+        "district_name": "Yangon (West)",
+        "postal_code": "11131"
+      },
+      {
+        "township_code": "MMR013032",
+        "township_name": "Cocokyun (ကိုကိုးကျွန်း)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D003",
+        "district_name": "Yangon (South)",
+        "postal_code": "11241"
+      },
+      {
+        "township_code": "MMR013025",
+        "township_name": "Thongwa (သုံးခွ)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D003",
+        "district_name": "Yangon (South)",
+        "postal_code": "11271"
+      },
+      {
+        "township_code": "MMR013039",
+        "township_name": "Sanchaung (စမ်းချောင်း)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D004",
+        "district_name": "Yangon (West)",
+        "postal_code": "11111"
+      },
+      {
+        "township_code": "MMR013030",
+        "township_name": "Dala (ဒလ)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D003",
+        "district_name": "Yangon (South)",
+        "postal_code": "11211"
+      },
+      {
+        "township_code": "MMR013026",
+        "township_name": "Kayan (ခရမ်း)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D003",
+        "district_name": "Yangon (South)",
+        "postal_code": "11281"
+      },
+      {
+        "township_code": "MMR013034",
+        "township_name": "Pabedan (ပန်းဘဲတန်း)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D004",
+        "district_name": "Yangon (West)",
+        "postal_code": "11141"
+      },
+      {
+        "township_code": "MMR013024",
+        "township_name": "Kyauktan (ကျောက်တန်း)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D003",
+        "district_name": "Yangon (South)",
+        "postal_code": "06093"
+      },
+      {
+        "township_code": "MMR013037",
+        "township_name": "Ahlone (အလုံ)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D004",
+        "district_name": "Yangon (West)",
+        "postal_code": "11121"
+      },
+      {
+        "township_code": "MMR013040",
+        "township_name": "Hlaing (လှိုင်)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D004",
+        "district_name": "Yangon (West)",
+        "postal_code": "11051"
+      },
+      {
+        "township_code": "MMR013041",
+        "township_name": "Kamaryut (ကမာရွတ်)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D004",
+        "district_name": "Yangon (West)",
+        "postal_code": "11041"
+      },
+      {
+        "township_code": "MMR013044",
+        "township_name": "Bahan (ဗဟန်း)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D004",
+        "district_name": "Yangon (West)",
+        "postal_code": "11201"
+      },
+      {
+        "township_code": "MMR013045",
+        "township_name": "Seikkan (ဆိပ်ကမ်း)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D004",
+        "district_name": "Yangon (West)",
+        "postal_code": "11191"
+      },
+      {
+        "township_code": "MMR013042",
+        "township_name": "Mayangone (မရမ်းကုန်း)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "",
+        "district_name": "Yangon (West)",
+        "postal_code": "11061"
+      },
+      {
+        "township_code": "MMR013043",
+        "township_name": "Dagon (ဒဂုံ)",
+        "city_en": "Yangon",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR013D004",
+        "district_name": "Yangon (West)",
+        "postal_code": "11191"
+      }
+    ]
+  },
+  {
+    "region_code": "MMR014",
+    "region_name": "Shan (South) (ရှမ်းပြည်နယ် (တောင်))",
+    "townships": [
+      {
+        "township_code": "MMR014005",
+        "township_name": "Kalaw (ကလော)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014D001",
+        "district_name": "Taunggyi",
+        "postal_code": "06021"
+      },
+      {
+        "township_code": "MMR014008",
+        "township_name": "Lawksawk (ရပ်စောက်)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014D001",
+        "district_name": "Taunggyi",
+        "postal_code": "06071"
+      },
+      {
+        "township_code": "MMR014013",
+        "township_name": "Nansang (နမ့်စန်)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014D002",
+        "district_name": "Loilen",
+        "postal_code": "06161"
+      },
+      {
+        "township_code": "MMR014014",
+        "township_name": "Kunhing (ကွန်ဟိန်း)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014D002",
+        "district_name": "Loilen",
+        "postal_code": "06211"
+      },
+      {
+        "township_code": "MMR014002",
+        "township_name": "Nyaungshwe (ညောင်ရွှေ)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014D001",
+        "district_name": "Taunggyi",
+        "postal_code": "06081"
+      },
+      {
+        "township_code": "MMR014012",
+        "township_name": "Laihka (လဲချား)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014D002",
+        "district_name": "Loilen",
+        "postal_code": "06121"
+      },
+      {
+        "township_code": "MMR014011",
+        "township_name": "Loilen (လွိုင်လင်)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014D002",
+        "district_name": "Loilen",
+        "postal_code": "06111"
+      },
+      {
+        "township_code": "MMR014001",
+        "township_name": "Taunggyi (တောင်ကြီး)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014D001",
+        "district_name": "Taunggyi",
+        "postal_code": "06011"
+      },
+      {
+        "township_code": "MMR014015",
+        "township_name": "Mayangone (မရမ်းကုန်း)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014D002",
+        "district_name": "Loilen",
+        "postal_code": "11061"
+      },
+      {
+        "township_code": "MMR014010",
+        "township_name": "Pekon (ဖယ်ခုံ)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014D001",
+        "district_name": "Taunggyi",
+        "postal_code": "06061"
+      },
+      {
+        "township_code": "MMR014016",
+        "township_name": "Mongkaing (မိုင်းကိုင်)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014D002",
+        "district_name": "Loilen",
+        "postal_code": "06131"
+      },
+      {
+        "township_code": "MMR014017",
+        "township_name": "Monghsu (မိုင်းရှူး)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014D002",
+        "district_name": "Loilen",
+        "postal_code": "06141"
+      },
+      {
+        "township_code": "MMR014006",
+        "township_name": "Pindaya (ပင်းတယ)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014S001",
+        "district_name": "Danu Self-Administered Zone",
+        "postal_code": "06031"
+      },
+      {
+        "township_code": "MMR014019",
+        "township_name": "Mongnai (မိုးနဲ)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014D003",
+        "district_name": "Langkho",
+        "postal_code": "06171"
+      },
+      {
+        "township_code": "MMR014020",
+        "township_name": "Mawkmai (မောက်မယ်)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014D003",
+        "district_name": "Langkho",
+        "postal_code": "06181"
+      },
+      {
+        "township_code": "MMR014021",
+        "township_name": "Mongpan (မိုင်းပန်)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014D003",
+        "district_name": "Langkho",
+        "postal_code": "06201"
+      },
+      {
+        "township_code": "MMR014018",
+        "township_name": "Langkho (လင်းခေး)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014D003",
+        "district_name": "Langkho",
+        "postal_code": "06191"
+      },
+      {
+        "township_code": "MMR014007",
+        "township_name": "Ywangan (ရွာငံ)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014S001",
+        "district_name": "Danu Self-Administered Zone",
+        "postal_code": "06041"
+      },
+      {
+        "township_code": "MMR014003",
+        "township_name": "Hopong (ဟိုပုံး)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014S002",
+        "district_name": "Pa-O Self-Administered Zone",
+        "postal_code": "06091"
+      },
+      {
+        "township_code": "MMR014004",
+        "township_name": "Hsihseng (ဆီဆိုင်)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014S002",
+        "district_name": "Pa-O Self-Administered Zone",
+        "postal_code": "06101"
+      },
+      {
+        "township_code": "MMR014009",
+        "township_name": "Pinlaung (ပင်လောင်း)",
+        "city_en": "Taunggyi",
+        "city_mm": "တောင်ကြီး",
+        "district_code": "MMR014S002",
+        "district_name": "Pa-O Self-Administered Zone",
+        "postal_code": "06051"
+      }
+    ]
+  },
+  {
+    "region_code": "MMR015",
+    "region_name": "Shan (North) (ရှမ်းပြည်နယ် (မြောက်))",
+    "townships": [
+      {
+        "township_code": "MMR015020",
+        "township_name": "Kunlong (ကွမ်းလုံ)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D001",
+        "district_name": "Lashio",
+        "postal_code": "06381"
+      },
+      {
+        "township_code": "MMR015009",
+        "township_name": "Muse (မူဆယ်)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D002",
+        "district_name": "Muse",
+        "postal_code": "06401"
+      },
+      {
+        "township_code": "MMR015003",
+        "township_name": "Mongyai (မိုင်းရယ်)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D001",
+        "district_name": "Lashio",
+        "postal_code": "06421"
+      },
+      {
+        "township_code": "MMR015001",
+        "township_name": "Lashio (လားရှိုး)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D001",
+        "district_name": "Lashio",
+        "postal_code": "06301"
+      },
+      {
+        "township_code": "MMR015002",
+        "township_name": "Hseni (သိန္နီ)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D001",
+        "district_name": "Lashio",
+        "postal_code": "06361"
+      },
+      {
+        "township_code": "MMR015004",
+        "township_name": "Tangyan (တန့်ယန်း)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D001",
+        "district_name": "Lashio",
+        "postal_code": "06431"
+      },
+      {
+        "township_code": "MMR015011",
+        "township_name": "Kutkai (ကွတ်ခိုင်)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D002",
+        "district_name": "Muse",
+        "postal_code": "06372"
+      },
+      {
+        "township_code": "MMR015014",
+        "township_name": "Hsipaw (သီပေါ)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D003",
+        "district_name": "Kyaukme",
+        "postal_code": "06341"
+      },
+      {
+        "township_code": "MMR015015",
+        "township_name": "Namtu (နမ္မတူ)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D003",
+        "district_name": "Kyaukme",
+        "postal_code": "06352"
+      },
+      {
+        "township_code": "MMR015007",
+        "township_name": "Pangwaun (ပန်ဝိုင်)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D006",
+        "district_name": "Hopang",
+        "postal_code": "06111"
+      },
+      {
+        "township_code": "MMR015012",
+        "township_name": "Kyaukme (ကျောက်မဲ)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D003",
+        "district_name": "Kyaukme",
+        "postal_code": "06321"
+      },
+      {
+        "township_code": "MMR015010",
+        "township_name": "Namhkan (နမ့်ခမ်း)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D002",
+        "district_name": "Muse",
+        "postal_code": "06411"
+      },
+      {
+        "township_code": "MMR015013",
+        "township_name": "Nawnghkio (နောင်ချို)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D003",
+        "district_name": "Kyaukme",
+        "postal_code": "06311"
+      },
+      {
+        "township_code": "MMR015203",
+        "township_name": "Chinshwehaw Sub-township (Kokang SAZ) (ချင်းရွှေဟော်မြို့နယ်ခွဲ (အထူးဒေသ ၁))",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D221",
+        "district_name": "Laukkaing (Kokang SAZ)",
+        "postal_code": "06482"
+      },
+      {
+        "township_code": "MMR015021",
+        "township_name": "Hopang (ဟိုပန်)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D006",
+        "district_name": "Hopang",
+        "postal_code": "06391"
+      },
+      {
+        "township_code": "MMR015306",
+        "township_name": "Hkun Mar (Hkwin Ma) (ခွန်းမား)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D331",
+        "district_name": "Mong Maw (Wa SAD)",
+        "postal_code": "06121"
+      },
+      {
+        "township_code": "MMR015302",
+        "township_name": "Nar Wee (Na Wi) (နာဝီး)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D331",
+        "district_name": "Mong Maw (Wa SAD)",
+        "postal_code": "06131"
+      },
+      {
+        "township_code": "MMR015017",
+        "township_name": "Mongmit (မိုးမိတ်)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D008",
+        "district_name": "Mongmit",
+        "postal_code": "06061"
+      },
+      {
+        "township_code": "MMR015303",
+        "township_name": "Man Tun (မန်တွန်း)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D331",
+        "district_name": "Mong Maw (Wa SAD)",
+        "postal_code": "06071"
+      },
+      {
+        "township_code": "MMR015304",
+        "township_name": "Kawng Min Hsang (ကောင်မင်ဆန်း)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D331",
+        "district_name": "Mong Maw (Wa SAD)",
+        "postal_code": "06081"
+      },
+      {
+        "township_code": "MMR015005",
+        "township_name": "Pangsang (Panghkam) (ပန်ဆန်း (ပန်ခမ်း))",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D007",
+        "district_name": "Matman",
+        "postal_code": "06091"
+      },
+      {
+        "township_code": "MMR015201",
+        "township_name": "Konkyan (Kokang SAZ) (ကုန်းကြမ်း (အထူးဒေသ ၁))",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D221",
+        "district_name": "Laukkaing (Kokang SAZ)",
+        "postal_code": "06101"
+      },
+      {
+        "township_code": "MMR015024",
+        "township_name": "Matman (မက်မန်း)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D007",
+        "district_name": "Matman",
+        "postal_code": "06111"
+      },
+      {
+        "township_code": "MMR015008",
+        "township_name": "Mongmao (မိုင်းမော)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D006",
+        "district_name": "Hopang",
+        "postal_code": "06121"
+      },
+      {
+        "township_code": "MMR015305",
+        "township_name": "Hsawng Hpa (Saun Pha) (ဆောင်ဖ)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D331",
+        "district_name": "Mong Maw (Wa SAD)",
+        "postal_code": "06131"
+      },
+      {
+        "township_code": "MMR015006",
+        "township_name": "Narphan (နားဖန်း)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D007",
+        "district_name": "Matman",
+        "postal_code": "06141"
+      },
+      {
+        "township_code": "MMR015301",
+        "township_name": "Nam Tit (နမ့် တစ်)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D331",
+        "district_name": "Mong Maw (Wa SAD)",
+        "postal_code": "06392"
+      },
+      {
+        "township_code": "MMR015202",
+        "township_name": "Laukkaing (Kokang SAZ) (လောက်ကိုင် (အထူးဒေသ ၁))",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D221",
+        "district_name": "Laukkaing (Kokang SAZ)",
+        "postal_code": "06151"
+      },
+      {
+        "township_code": "MMR015018",
+        "township_name": "Mabein (မဘိမ်း)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D008",
+        "district_name": "Mongmit",
+        "postal_code": "06051"
+      },
+      {
+        "township_code": "MMR015308",
+        "township_name": "Yawng Lin (ယောင်လင်း)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D331",
+        "district_name": "Mong Maw (Wa SAD)",
+        "postal_code": "06061"
+      },
+      {
+        "township_code": "MMR015307",
+        "township_name": "Long Htan (လုံထန်)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D331",
+        "district_name": "Mong Maw (Wa SAD)",
+        "postal_code": "06071"
+      },
+      {
+        "township_code": "MMR015313",
+        "township_name": "Man Man Hseng (မန်မန်ဆိုင်)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D332",
+        "district_name": "Wein Kawng (Wein Kao) (Wa SAD)",
+        "postal_code": "06081"
+      },
+      {
+        "township_code": "MMR015312",
+        "township_name": "Yin Pang (ရင်ဖန့်)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D331",
+        "district_name": "Mong Maw (Wa SAD)",
+        "postal_code": "06091"
+      },
+      {
+        "township_code": "MMR015316",
+        "township_name": "Nar Kawng (နားကောင်)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D332",
+        "district_name": "Wein Kawng (Wein Kao) (Wa SAD)",
+        "postal_code": "06101"
+      },
+      {
+        "township_code": "MMR015310",
+        "township_name": "Ka Lawng Hpar (ကလောင်ဖါ)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D331",
+        "district_name": "Mong Maw (Wa SAD)",
+        "postal_code": "06111"
+      },
+      {
+        "township_code": "MMR015023",
+        "township_name": "Konkyan (ကုန်းကြမ်း)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015S002",
+        "district_name": "Kokang Self-Administered Zone",
+        "postal_code": "06531"
+      },
+      {
+        "township_code": "MMR015317",
+        "township_name": "Pang Hkam (ပန်ခမ့်)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D332",
+        "district_name": "Wein Kawng (Wein Kao) (Wa SAD)",
+        "postal_code": "06121"
+      },
+      {
+        "township_code": "MMR015315",
+        "township_name": "Nam Hkam Wu (နမ်ခမ်းဝူး)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D332",
+        "district_name": "Wein Kawng (Wein Kao) (Wa SAD)",
+        "postal_code": "06131"
+      },
+      {
+        "township_code": "MMR015016",
+        "township_name": "Namhsan (နမ့်ဆန်)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015S001",
+        "district_name": "Pa Laung Self-Administered Zone",
+        "postal_code": "06331"
+      },
+      {
+        "township_code": "MMR015318",
+        "township_name": "Pang Yang (ပန်ယန်း)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D332",
+        "district_name": "Wein Kawng (Wein Kao) (Wa SAD)",
+        "postal_code": "06141"
+      },
+      {
+        "township_code": "MMR015022",
+        "township_name": "Laukkaing (လောက်ကိုင်)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015S002",
+        "district_name": "Kokang Self-Administered Zone",
+        "postal_code": "06481"
+      },
+      {
+        "township_code": "MMR015309",
+        "township_name": "Lin Haw (လင်ဟော်)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D331",
+        "district_name": "Mong Maw (Wa SAD)",
+        "postal_code": "06151"
+      },
+      {
+        "township_code": "MMR015314",
+        "township_name": "Nawng Hkit (နောင်ခစ်)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D332",
+        "district_name": "Wein Kawng (Wein Kao) (Wa SAD)",
+        "postal_code": "06161"
+      },
+      {
+        "township_code": "MMR015311",
+        "township_name": "Aik Chan (Ai' Chun) (အိုက်ချန်)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015D331",
+        "district_name": "Mong Maw (Wa SAD)",
+        "postal_code": "06171"
+      },
+      {
+        "township_code": "MMR015019",
+        "township_name": "Manton (မန်တုံ)",
+        "city_en": "Lashio",
+        "city_mm": "ရန်ကုန်",
+        "district_code": "MMR015S001",
+        "district_name": "Pa Laung Self-Administered Zone",
+        "postal_code": "06541"
+      }
+    ]
+  },
+  {
+    "region_code": "MMR016",
+    "region_name": "Shan (East) (ရှမ်းပြည်နယ် (အရှေ့))",
+    "townships": [
+      {
+        "township_code": "MMR016001",
+        "township_name": "Kengtung (ကျိုင်းတုံ)",
+        "city_en": "Tachileik",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR016D001",
+        "district_name": "Kengtung",
+        "postal_code": "06231"
+      },
+      {
+        "township_code": "MMR016011",
+        "township_name": "Mongyawng (မိုင်းယောင်း)",
+        "city_en": "Tachileik",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR016D003",
+        "district_name": "Tachileik",
+        "postal_code": "06261"
+      },
+      {
+        "township_code": "MMR016319",
+        "township_name": "Mong Hpen (မိုင်းဖျန်)",
+        "city_en": "Tachileik",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR016D333",
+        "district_name": "Mong Pawk (Wa SAD)",
+        "postal_code": "06181"
+      },
+      {
+        "township_code": "MMR016005",
+        "township_name": "Mongla (မိုင်းလား)",
+        "city_en": "Tachileik",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR016D001",
+        "district_name": "Kengtung",
+        "postal_code": "06232"
+      },
+      {
+        "township_code": "MMR016002",
+        "township_name": "Mongkhet (မိုင်းခတ်)",
+        "city_en": "Tachileik",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR016D001",
+        "district_name": "Kengtung",
+        "postal_code": "06471"
+      },
+      {
+        "township_code": "MMR016010",
+        "township_name": "Monghpyak (မိုင်းဖြတ်)",
+        "city_en": "Tachileik",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR016D003",
+        "district_name": "Tachileik",
+        "postal_code": "06251"
+      },
+      {
+        "township_code": "MMR016321",
+        "township_name": "Mong Pawk (မိုင်းပေါက်)",
+        "city_en": "Tachileik",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR016D333",
+        "district_name": "Mong Pawk (Wa SAD)",
+        "postal_code": "06191"
+      },
+      {
+        "township_code": "MMR016003",
+        "township_name": "Mongyang (မိုင်းယန်း)",
+        "city_en": "Tachileik",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR016D001",
+        "district_name": "Kengtung",
+        "postal_code": "06241"
+      },
+      {
+        "township_code": "MMR016008",
+        "township_name": "Mongton (မိုင်းတုံ)",
+        "city_en": "Tachileik",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR016D002",
+        "district_name": "Monghsat",
+        "postal_code": "06011"
+      },
+      {
+        "township_code": "MMR016007",
+        "township_name": "Mongping (မိုင်းပျဉ်း)",
+        "city_en": "Tachileik",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR016D001",
+        "district_name": "Kengtung",
+        "postal_code": "06221"
+      },
+      {
+        "township_code": "MMR016009",
+        "township_name": "Tachileik (တာချီလိတ်)",
+        "city_en": "Tachileik",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR016D003",
+        "district_name": "Tachileik",
+        "postal_code": "06271"
+      },
+      {
+        "township_code": "MMR016006",
+        "township_name": "Monghsat (မိုင်းဆတ်)",
+        "city_en": "Tachileik",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR016D002",
+        "district_name": "Monghsat",
+        "postal_code": "06021"
+      },
+      {
+        "township_code": "MMR016320",
+        "township_name": "Ho Tawng (Ho Tao) (ဟိုတောင်း)",
+        "city_en": "Tachileik",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR016D333",
+        "district_name": "Mong Pawk (Wa SAD)",
+        "postal_code": "06263"
+      },
+      {
+        "township_code": "MMR016322",
+        "township_name": "Mong Kar (မိုင်းကာ)",
+        "city_en": "Tachileik",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR016D333",
+        "district_name": "Mong Pawk (Wa SAD)",
+        "postal_code": "06031"
+      },
+      {
+        "township_code": "MMR016323",
+        "township_name": "Nam Hpai (နမ့်ဖိုင်)",
+        "city_en": "Tachileik",
+        "city_mm": "လွိုင်ကော်",
+        "district_code": "MMR016D333",
+        "district_name": "Mong Pawk (Wa SAD)",
+        "postal_code": "06051"
+      }
+    ]
+  },
+  {
+    "region_code": "MMR017",
+    "region_name": "Ayeyarwady (ဧရာဝတီတိုင်းဒေသကြီး)",
+    "townships": [
+      {
+        "township_code": "MMR017005",
+        "township_name": "Kyonpyaw (ကျုံပျော်)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D001",
+        "district_name": "Pathein",
+        "postal_code": "10091"
+      },
+      {
+        "township_code": "MMR017001",
+        "township_name": "Pathein (ပုသိမ်)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D001",
+        "district_name": "Pathein",
+        "postal_code": "10011"
+      },
+      {
+        "township_code": "MMR017013",
+        "township_name": "Ingapu (အင်္ဂပူ)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D002",
+        "district_name": "Hinthada",
+        "postal_code": "10051"
+      },
+      {
+        "township_code": "MMR017003",
+        "township_name": "Thabaung (သာပေါင်း)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D001",
+        "district_name": "Pathein",
+        "postal_code": "10111"
+      },
+      {
+        "township_code": "MMR017011",
+        "township_name": "Myanaung (မြန်အောင်)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D002",
+        "district_name": "Hinthada",
+        "postal_code": "10041"
+      },
+      {
+        "township_code": "MMR017012",
+        "township_name": "Kyangin (ကြံခင်း)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D002",
+        "district_name": "Hinthada",
+        "postal_code": "10031"
+      },
+      {
+        "township_code": "MMR017015",
+        "township_name": "Einme (အိမ်မဲ)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D003",
+        "district_name": "Myaungmya",
+        "postal_code": "10191"
+      },
+      {
+        "township_code": "MMR017009",
+        "township_name": "Zalun (ဇလွန်)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D002",
+        "district_name": "Hinthada",
+        "postal_code": "10141"
+      },
+      {
+        "township_code": "MMR017002",
+        "township_name": "Kangyidaunt (ကန်ကြီးထောင့်)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D001",
+        "district_name": "Pathein",
+        "postal_code": "10021"
+      },
+      {
+        "township_code": "MMR017010",
+        "township_name": "Lemyethna (လေးမျက်နှာ)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D002",
+        "district_name": "Hinthada",
+        "postal_code": "10071"
+      },
+      {
+        "township_code": "MMR017004",
+        "township_name": "Ngapudaw (ငပုတော)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D001",
+        "district_name": "Pathein",
+        "postal_code": "10131"
+      },
+      {
+        "township_code": "MMR017007",
+        "township_name": "Kyaunggon (ကျောင်းကုန်း)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D001",
+        "district_name": "Pathein",
+        "postal_code": "06041"
+      },
+      {
+        "township_code": "MMR017008",
+        "township_name": "Hinthada (ဟင်္သာတ)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D002",
+        "district_name": "Hinthada",
+        "postal_code": "10061"
+      },
+      {
+        "township_code": "MMR017014",
+        "township_name": "Myaungmya (မြောင်းမြ)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D003",
+        "district_name": "Myaungmya",
+        "postal_code": "10211"
+      },
+      {
+        "township_code": "MMR017006",
+        "township_name": "Yegyi (ရေကြည်)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D001",
+        "district_name": "Pathein",
+        "postal_code": "10081"
+      },
+      {
+        "township_code": "MMR017017",
+        "township_name": "Wakema (ဝါးခယ်မ)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D003",
+        "district_name": "Myaungmya",
+        "postal_code": "10201"
+      },
+      {
+        "township_code": "MMR017018",
+        "township_name": "Mawlamyinegyun (မော်လမြိုင်ကျွန်း)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D004",
+        "district_name": "Labutta",
+        "postal_code": "10122"
+      },
+      {
+        "township_code": "MMR017023",
+        "township_name": "Pyapon (ဖျာပုံ)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D006",
+        "district_name": "Pyapon",
+        "postal_code": "10251"
+      },
+      {
+        "township_code": "MMR017025",
+        "township_name": "Kyaiklat (ကျိုက်လတ်)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D006",
+        "district_name": "Pyapon",
+        "postal_code": "10241"
+      },
+      {
+        "township_code": "MMR017026",
+        "township_name": "Dedaye (ဒေးဒရဲ)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D006",
+        "district_name": "Pyapon",
+        "postal_code": "10261"
+      },
+      {
+        "township_code": "MMR017020",
+        "township_name": "Pantanaw (ပန်းတနော်)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D005",
+        "district_name": "Maubin",
+        "postal_code": "10171"
+      },
+      {
+        "township_code": "MMR017019",
+        "township_name": "Maubin (မအူပင်)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D005",
+        "district_name": "Maubin",
+        "postal_code": "10181"
+      },
+      {
+        "township_code": "MMR017024",
+        "township_name": "Bogale (ဘိုကလေး)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D006",
+        "district_name": "Pyapon",
+        "postal_code": "10231"
+      },
+      {
+        "township_code": "MMR017022",
+        "township_name": "Danubyu (ဓနုဖြူ)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D005",
+        "district_name": "Maubin",
+        "postal_code": "10151"
+      },
+      {
+        "township_code": "MMR017021",
+        "township_name": "Nyaungdon (ညောင်တုန်း)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D005",
+        "district_name": "Maubin",
+        "postal_code": "10161"
+      },
+      {
+        "township_code": "MMR017016",
+        "township_name": "Labutta (လပွတ္တာ)",
+        "city_en": "Pathein",
+        "city_mm": "ပုသိမ်",
+        "district_code": "MMR017D004",
+        "district_name": "Labutta",
+        "postal_code": "10121"
+      }
+    ]
+  },
+  {
+    "region_code": "MMR018",
+    "region_name": "Nay Pyi Taw (နေပြည်တော်)",
+    "townships": [
+      {
+        "township_code": "MMR018001",
+        "township_name": "Zay Yar Thi Ri (ဇေယျာသီရိ)",
+        "city_en": "Nay Pyi Taw",
+        "city_mm": "နေပြည်တော်",
+        "district_code": "MMR018D001",
+        "district_name": "Oke Ta Ra",
+        "postal_code": "15011"
+      },
+      {
+        "township_code": "MMR018003",
+        "township_name": "Tatkon (တပ်ကုန်း)",
+        "city_en": "Nay Pyi Taw",
+        "city_mm": "နေပြည်တော်",
+        "district_code": "MMR018D001",
+        "district_name": "Oke Ta Ra",
+        "postal_code": "15021"
+      },
+      {
+        "township_code": "MMR018005",
+        "township_name": "Poke Ba Thi Ri (ပုဗ္ဗသီရိ)",
+        "city_en": "Nay Pyi Taw",
+        "city_mm": "နေပြည်တော်",
+        "district_code": "MMR018D001",
+        "district_name": "Oke Ta Ra",
+        "postal_code": "15031"
+      },
+      {
+        "township_code": "MMR018008",
+        "township_name": "Oke Ta Ra Thi Ri (ဥတ္တရသီရိ)",
+        "city_en": "Nay Pyi Taw",
+        "city_mm": "နေပြည်တော်",
+        "district_code": "MMR018D001",
+        "district_name": "Oke Ta Ra",
+        "postal_code": "15041"
+      },
+      {
+        "township_code": "MMR018004",
+        "township_name": "Det Khi Na Thi Ri (ဒက္ခိဏသီရိ)",
+        "city_en": "Nay Pyi Taw",
+        "city_mm": "နေပြည်တော်",
+        "district_code": "MMR018D002",
+        "district_name": "Det Khi Na",
+        "postal_code": "15051"
+      },
+      {
+        "township_code": "MMR018007",
+        "township_name": "Lewe (လယ်ဝေး)",
+        "city_en": "Nay Pyi Taw",
+        "city_mm": "နေပြည်တော်",
+        "district_code": "MMR018D002",
+        "district_name": "Det Khi Na",
+        "postal_code": "15061"
+      },
+      {
+        "township_code": "MMR018006",
+        "township_name": "Pyinmana (ပျဉ်းမနား)",
+        "city_en": "Nay Pyi Taw",
+        "city_mm": "နေပြည်တော်",
+        "district_code": "MMR018D002",
+        "district_name": "Det Khi Na",
+        "postal_code": "15071"
+      },
+      {
+        "township_code": "MMR018002",
+        "township_name": "Za Bu Thi Ri (ဇမ္ဗူသီရိ)",
+        "city_en": "Nay Pyi Taw",
+        "city_mm": "နေပြည်တော်",
+        "district_code": "MMR018D002",
+        "district_name": "Det Khi Na",
+        "postal_code": "15081"
+      }
+    ]
+  }
+]
