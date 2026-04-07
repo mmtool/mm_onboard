@@ -477,14 +477,18 @@ export default function OnboardingForm() {
 
   const downloadPDF = async () => {
     const element = document.getElementById('pdf-template');
-    if (!element) return;
+    if (!element) {
+      console.error('PDF template not found');
+      return;
+    }
 
     try {
       const canvas = await html2canvas(element, {
         scale: 2,
         useCORS: true,
         logging: false,
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
+        windowWidth: 800
       });
       
       const imgData = canvas.toDataURL('image/png');
@@ -500,6 +504,131 @@ export default function OnboardingForm() {
       alert('Failed to generate PDF. Please try again.');
     }
   };
+
+  const PDFTemplate = () => (
+    <div id="pdf-template" className="fixed -left-[9999px] top-0 w-[800px] bg-white p-10 text-slate-900 font-sans">
+      <div className="border-b-2 border-slate-900 pb-6 mb-8 flex justify-between items-end">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tighter">SHWEBANK</h1>
+          <p className="text-sm font-medium text-slate-500">MERCHANT ONBOARDING FORM</p>
+        </div>
+        <div className="text-right">
+          <div className="text-xs font-bold text-slate-400 uppercase">Application ID</div>
+          <div className="text-lg font-mono font-bold">{formData.id}</div>
+        </div>
+      </div>
+
+      <div className="space-y-8">
+        <section>
+          <h2 className="text-xs font-bold bg-slate-100 p-2 mb-4 uppercase tracking-widest border-l-4 border-slate-900">1. Application Information</h2>
+          <table className="w-full border-collapse border border-slate-200 text-sm">
+            <tbody>
+              <tr>
+                <td className="border border-slate-200 p-2 bg-slate-50 font-bold w-1/3">Onboarded By</td>
+                <td className="border border-slate-200 p-2">{formData.onboard_by}</td>
+              </tr>
+              <tr>
+                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Applicant Email</td>
+                <td className="border border-slate-200 p-2">{formData.applicant_email}</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2 className="text-xs font-bold bg-slate-100 p-2 mb-4 uppercase tracking-widest border-l-4 border-slate-900">2. Owner Information</h2>
+          <table className="w-full border-collapse border border-slate-200 text-sm">
+            <tbody>
+              <tr>
+                <td className="border border-slate-200 p-2 bg-slate-50 font-bold w-1/3">Full Name (EN)</td>
+                <td className="border border-slate-200 p-2">{formData.title} {formData.last_name}</td>
+              </tr>
+              <tr>
+                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Full Name (MM)</td>
+                <td className="border border-slate-200 p-2">{formData.title_mm} {formData.last_name_mm}</td>
+              </tr>
+              <tr>
+                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Phone Number</td>
+                <td className="border border-slate-200 p-2">{formData.merchant_phone_no}</td>
+              </tr>
+              <tr>
+                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">NRC Number</td>
+                <td className="border border-slate-200 p-2">{formData.nrc_full}</td>
+              </tr>
+              <tr>
+                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Date of Birth</td>
+                <td className="border border-slate-200 p-2">{formData.dob}</td>
+              </tr>
+              <tr>
+                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Father's Name</td>
+                <td className="border border-slate-200 p-2">{formData.father_name}</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2 className="text-xs font-bold bg-slate-100 p-2 mb-4 uppercase tracking-widest border-l-4 border-slate-900">3. Business Information</h2>
+          <table className="w-full border-collapse border border-slate-200 text-sm">
+            <tbody>
+              <tr>
+                <td className="border border-slate-200 p-2 bg-slate-50 font-bold w-1/3">Company Name (EN)</td>
+                <td className="border border-slate-200 p-2">{formData.company_name_en}</td>
+              </tr>
+              <tr>
+                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Company Name (MM)</td>
+                <td className="border border-slate-200 p-2">{formData.company_name_mm}</td>
+              </tr>
+              <tr>
+                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Merchant Label (EN)</td>
+                <td className="border border-slate-200 p-2">{formData.merchant_label_en}</td>
+              </tr>
+              <tr>
+                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Merchant Label (MM)</td>
+                <td className="border border-slate-200 p-2">{formData.merchant_label_mm}</td>
+              </tr>
+              <tr>
+                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">MCC</td>
+                <td className="border border-slate-200 p-2">{formData.mcc_name} ({formData.mcc_code})</td>
+              </tr>
+              <tr>
+                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">DICA / GRN / RCDC</td>
+                <td className="border border-slate-200 p-2">{formData.dica_grn_rcdc || 'N/A'}</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2 className="text-xs font-bold bg-slate-100 p-2 mb-4 uppercase tracking-widest border-l-4 border-slate-900">4. Address Details</h2>
+          <table className="w-full border-collapse border border-slate-200 text-sm">
+            <tbody>
+              <tr>
+                <td className="border border-slate-200 p-2 bg-slate-50 font-bold w-1/3">Owner Address</td>
+                <td className="border border-slate-200 p-2">{formData.owner_full_address}</td>
+              </tr>
+              <tr>
+                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Merchant Address</td>
+                <td className="border border-slate-200 p-2">{formData.merchant_full_address}</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <div className="pt-12 flex justify-between items-end">
+          <div className="text-center">
+            <div className="w-48 border-b border-slate-400 mb-2"></div>
+            <div className="text-[10px] uppercase font-bold text-slate-400">Date</div>
+          </div>
+          <div className="text-center">
+            {sigDataUrl && <img src={sigDataUrl} className="h-16 mx-auto mb-2" />}
+            <div className="w-48 border-b border-slate-400 mb-2"></div>
+            <div className="text-[10px] uppercase font-bold text-slate-400">Merchant Signature</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 
   // --- Render Helpers ---
   const renderField = (id: string, label: string, type: string = 'text', placeholder: string = '', options: any[] = [], required = false, readonly = false) => {
@@ -542,34 +671,37 @@ export default function OnboardingForm() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-bg flex items-center justify-center p-6">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-surface border border-border rounded-lg p-10 max-w-md w-full text-center"
-        >
-          <div className="text-6xl mb-6">✅</div>
-          <h2 className="text-2xl font-bold mb-2">Submitted!</h2>
-          <p className="text-text2 mb-6">Your application has been received and is under review.</p>
-          <div className="bg-bg p-4 rounded-sm font-mono text-sm text-text3 mb-8">
-            {formData.id}
-          </div>
-          <div className="flex flex-col gap-3">
-            <button 
-              onClick={downloadPDF}
-              className="btn btn-ghost w-full flex items-center justify-center gap-2"
-            >
-              <Download className="w-4 h-4" /> Download Onboarding PDF
-            </button>
-            <button 
-              onClick={resetForm}
-              className="btn btn-primary w-full"
-            >
-              New Application
-            </button>
-          </div>
-        </motion.div>
-      </div>
+      <>
+        <div className="min-h-screen bg-bg flex items-center justify-center p-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-surface border border-border rounded-lg p-10 max-w-md w-full text-center"
+          >
+            <div className="text-6xl mb-6">✅</div>
+            <h2 className="text-2xl font-bold mb-2">Submitted!</h2>
+            <p className="text-text2 mb-6">Your application has been received and is under review.</p>
+            <div className="bg-bg p-4 rounded-sm font-mono text-sm text-text3 mb-8">
+              {formData.id}
+            </div>
+            <div className="flex flex-col gap-3">
+              <button 
+                onClick={downloadPDF}
+                className="btn btn-ghost w-full flex items-center justify-center gap-2"
+              >
+                <Download className="w-4 h-4" /> Download Onboarding PDF
+              </button>
+              <button 
+                onClick={resetForm}
+                className="btn btn-primary w-full"
+              >
+                New Application
+              </button>
+            </div>
+          </motion.div>
+        </div>
+        <PDFTemplate />
+      </>
     );
   }
 
@@ -827,130 +959,6 @@ export default function OnboardingForm() {
         </AnimatePresence>
       </main>
 
-      {/* Hidden PDF Template for html2canvas */}
-      <div id="pdf-template" className="fixed -left-[9999px] top-0 w-[800px] bg-white p-10 text-slate-900 font-sans">
-        <div className="border-b-2 border-slate-900 pb-6 mb-8 flex justify-between items-end">
-          <div>
-            <h1 className="text-3xl font-bold tracking-tighter">SHWEBANK</h1>
-            <p className="text-sm font-medium text-slate-500">MERCHANT ONBOARDING FORM</p>
-          </div>
-          <div className="text-right">
-            <div className="text-xs font-bold text-slate-400 uppercase">Application ID</div>
-            <div className="text-lg font-mono font-bold">{formData.id}</div>
-          </div>
-        </div>
-
-        <div className="space-y-8">
-          <section>
-            <h2 className="text-xs font-bold bg-slate-100 p-2 mb-4 uppercase tracking-widest border-l-4 border-slate-900">1. Application Information</h2>
-            <table className="w-full border-collapse border border-slate-200 text-sm">
-              <tbody>
-                <tr>
-                  <td className="border border-slate-200 p-2 bg-slate-50 font-bold w-1/3">Onboarded By</td>
-                  <td className="border border-slate-200 p-2">{formData.onboard_by}</td>
-                </tr>
-                <tr>
-                  <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Applicant Email</td>
-                  <td className="border border-slate-200 p-2">{formData.applicant_email}</td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-
-          <section>
-            <h2 className="text-xs font-bold bg-slate-100 p-2 mb-4 uppercase tracking-widest border-l-4 border-slate-900">2. Owner Information</h2>
-            <table className="w-full border-collapse border border-slate-200 text-sm">
-              <tbody>
-                <tr>
-                  <td className="border border-slate-200 p-2 bg-slate-50 font-bold w-1/3">Full Name (EN)</td>
-                  <td className="border border-slate-200 p-2">{formData.title} {formData.last_name}</td>
-                </tr>
-                <tr>
-                  <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Full Name (MM)</td>
-                  <td className="border border-slate-200 p-2">{formData.title_mm} {formData.last_name_mm}</td>
-                </tr>
-                <tr>
-                  <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Phone Number</td>
-                  <td className="border border-slate-200 p-2">{formData.merchant_phone_no}</td>
-                </tr>
-                <tr>
-                  <td className="border border-slate-200 p-2 bg-slate-50 font-bold">NRC Number</td>
-                  <td className="border border-slate-200 p-2">{formData.nrc_full}</td>
-                </tr>
-                <tr>
-                  <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Date of Birth</td>
-                  <td className="border border-slate-200 p-2">{formData.dob}</td>
-                </tr>
-                <tr>
-                  <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Father's Name</td>
-                  <td className="border border-slate-200 p-2">{formData.father_name}</td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-
-          <section>
-            <h2 className="text-xs font-bold bg-slate-100 p-2 mb-4 uppercase tracking-widest border-l-4 border-slate-900">3. Business Information</h2>
-            <table className="w-full border-collapse border border-slate-200 text-sm">
-              <tbody>
-                <tr>
-                  <td className="border border-slate-200 p-2 bg-slate-50 font-bold w-1/3">Company Name (EN)</td>
-                  <td className="border border-slate-200 p-2">{formData.company_name_en}</td>
-                </tr>
-                <tr>
-                  <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Company Name (MM)</td>
-                  <td className="border border-slate-200 p-2">{formData.company_name_mm}</td>
-                </tr>
-                <tr>
-                  <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Merchant Label (EN)</td>
-                  <td className="border border-slate-200 p-2">{formData.merchant_label_en}</td>
-                </tr>
-                <tr>
-                  <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Merchant Label (MM)</td>
-                  <td className="border border-slate-200 p-2">{formData.merchant_label_mm}</td>
-                </tr>
-                <tr>
-                  <td className="border border-slate-200 p-2 bg-slate-50 font-bold">MCC</td>
-                  <td className="border border-slate-200 p-2">{formData.mcc_name} ({formData.mcc_code})</td>
-                </tr>
-                <tr>
-                  <td className="border border-slate-200 p-2 bg-slate-50 font-bold">DICA / GRN / RCDC</td>
-                  <td className="border border-slate-200 p-2">{formData.dica_grn_rcdc || 'N/A'}</td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-
-          <section>
-            <h2 className="text-xs font-bold bg-slate-100 p-2 mb-4 uppercase tracking-widest border-l-4 border-slate-900">4. Address Details</h2>
-            <table className="w-full border-collapse border border-slate-200 text-sm">
-              <tbody>
-                <tr>
-                  <td className="border border-slate-200 p-2 bg-slate-50 font-bold w-1/3">Owner Address</td>
-                  <td className="border border-slate-200 p-2">{formData.owner_full_address}</td>
-                </tr>
-                <tr>
-                  <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Merchant Address</td>
-                  <td className="border border-slate-200 p-2">{formData.merchant_full_address}</td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-
-          <div className="pt-12 flex justify-between items-end">
-            <div className="text-center">
-              <div className="w-48 border-b border-slate-400 mb-2"></div>
-              <div className="text-[10px] uppercase font-bold text-slate-400">Date</div>
-            </div>
-            <div className="text-center">
-              {sigDataUrl && <img src={sigDataUrl} className="h-16 mx-auto mb-2" />}
-              <div className="w-48 border-b border-slate-400 mb-2"></div>
-              <div className="text-[10px] uppercase font-bold text-slate-400">Merchant Signature</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Navigation */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-bg/95 backdrop-blur-md border-t border-border flex gap-3 z-40">
         {currentStep > 1 && (
@@ -977,6 +985,8 @@ export default function OnboardingForm() {
           </button>
         )}
       </div>
+
+      <PDFTemplate />
     </div>
   );
 }
