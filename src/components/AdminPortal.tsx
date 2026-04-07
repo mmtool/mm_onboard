@@ -71,22 +71,6 @@ export default function AdminPortal() {
   const [selectedApp, setSelectedApp] = useState<Application | null>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editData, setEditData] = useState<Partial<Application>>({});
-  const [signatureUrl, setSignatureUrl] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (selectedApp?.doc_signature) {
-      const fetchSig = async () => {
-        const { data } = await supabase.storage
-          .from('merchant-signatures')
-          .createSignedUrl(selectedApp.doc_signature, 3600);
-        setSignatureUrl(data?.signedUrl || null);
-      };
-      fetchSig();
-    } else {
-      setSignatureUrl(null);
-    }
-  }, [selectedApp]);
-
   const [isAuth, setIsAuth] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -222,8 +206,7 @@ export default function AdminPortal() {
         scale: 2,
         useCORS: true,
         logging: false,
-        backgroundColor: '#ffffff',
-        windowWidth: 800
+        backgroundColor: '#ffffff'
       });
       
       const imgData = canvas.toDataURL('image/png');
@@ -645,7 +628,7 @@ export default function AdminPortal() {
 
       {/* Hidden PDF Template for Admin */}
       {selectedApp && (
-        <div id="admin-pdf-template" className="fixed opacity-0 pointer-events-none top-0 left-0 w-[800px] bg-white p-10 text-slate-900 font-sans z-[-1]">
+        <div id="admin-pdf-template" className="fixed -left-[9999px] top-0 w-[800px] bg-white p-10 text-slate-900 font-sans">
           <div className="border-b-2 border-slate-900 pb-6 mb-8 flex justify-between items-end">
             <div>
               <h1 className="text-3xl font-bold tracking-tighter">SHWEBANK</h1>
@@ -741,18 +724,6 @@ export default function AdminPortal() {
                 </tbody>
               </table>
             </section>
-
-            <div className="pt-12 flex justify-between items-end">
-              <div className="text-center">
-                <div className="w-48 border-b border-slate-400 mb-2"></div>
-                <div className="text-[10px] uppercase font-bold text-slate-400">Date</div>
-              </div>
-              <div className="text-center">
-                {signatureUrl && <img src={signatureUrl} className="h-16 mx-auto mb-2" crossOrigin="anonymous" />}
-                <div className="w-48 border-b border-slate-400 mb-2"></div>
-                <div className="text-[10px] uppercase font-bold text-slate-400">Merchant Signature</div>
-              </div>
-            </div>
           </div>
         </div>
       )}
