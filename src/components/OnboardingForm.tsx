@@ -995,30 +995,42 @@ export default function OnboardingForm() {
       </main>
 
       {/* Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-bg/95 backdrop-blur-md border-t border-border flex gap-3 z-40">
-        {currentStep > 1 && (
-          <button onClick={prevStep} className="btn btn-ghost flex items-center justify-center gap-2">
-            <ChevronLeft className="w-4 h-4" /> Back
-          </button>
-        )}
-        
-        {currentStep === STEPS.length ? (
-          <button 
-            onClick={submitApplication} 
-            disabled={isSubmitting}
-            className="btn btn-success flex items-center justify-center gap-2"
-          >
-            {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
-            {isSubmitting ? 'Submitting...' : 'Submit Application'}
-          </button>
-        ) : (
-          <button 
-            onClick={nextStep} 
-            className={`btn btn-primary flex items-center justify-center gap-2 ${currentStep === 1 ? 'w-full' : ''}`}
-          >
-            Next <ChevronRight className="w-4 h-4" />
-          </button>
-        )}
+      <div className="fixed bottom-0 left-0 right-0 p-4 bg-bg/95 backdrop-blur-md border-t border-border flex flex-col gap-2 z-40">
+        <div className="flex gap-3">
+          {currentStep > 1 && (
+            <button onClick={prevStep} className="btn btn-ghost flex items-center justify-center gap-2">
+              <ChevronLeft className="w-4 h-4" /> Back
+            </button>
+          )}
+          
+          {currentStep === STEPS.length ? (
+            <button 
+              onClick={submitApplication} 
+              disabled={isSubmitting}
+              className="btn btn-success flex items-center justify-center gap-2"
+            >
+              {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
+              {isSubmitting ? 'Submitting...' : 'Submit Application'}
+            </button>
+          ) : (
+            <button 
+              onClick={nextStep} 
+              className={`btn btn-primary flex items-center justify-center gap-2 ${currentStep === 1 ? 'w-full' : ''}`}
+            >
+              Next <ChevronRight className="w-4 h-4" />
+            </button>
+          )}
+        </div>
+
+        {/* Debug Info for Netlify Troubleshooting */}
+        <div className="flex justify-center gap-4 text-[9px] font-mono text-text3 uppercase tracking-widest opacity-50">
+          <span className={import.meta.env.VITE_SUPABASE_URL ? 'text-success' : 'text-danger'}>
+            URL: {import.meta.env.VITE_SUPABASE_URL ? 'LOADED' : 'MISSING'}
+          </span>
+          <span className={import.meta.env.VITE_SUPABASE_ANON_KEY ? 'text-success' : 'text-danger'}>
+            KEY: {import.meta.env.VITE_SUPABASE_ANON_KEY ? 'LOADED' : 'MISSING'}
+          </span>
+        </div>
       </div>
 
       <PDFTemplate />
