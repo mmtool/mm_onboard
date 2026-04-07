@@ -198,6 +198,65 @@ export default function OnboardingForm() {
     }
   }, []);
 
+  const fillDemoData = () => {
+    setFormData(prev => ({
+      ...prev,
+      onboard_by: 'Employee',
+      applicant_email: 'demo.merchant@example.com',
+      merchant_phone_no: '09123456789',
+      title: 'Mr.',
+      title_mm: 'ဦး',
+      last_name: 'Kyaw Kyaw',
+      last_name_mm: 'ကျော်ကျော်',
+      dob: '1990-01-01',
+      father_name: 'U Ba',
+      gender: 'Male',
+      marital_status: 'Single',
+      contact_number: '09123456789',
+      nrc_no: '12',
+      nrc_tsp: 'DABANA',
+      nrc_type: '(N)',
+      nrc_number: '123456',
+      nrc_full: '12/DABANA(N)123456',
+      owner_region: 'Yangon',
+      owner_township: 'Dagon',
+      owner_district: 'Yangon West',
+      owner_city_en: 'Yangon',
+      owner_city_mm: 'ရန်ကုန်',
+      owner_postal_code: '11181',
+      owner_house_no: 'No. 123',
+      owner_street: 'Pyay Road',
+      owner_house_no_mm: 'အမှတ် ၁၂၃',
+      owner_street_mm: 'ပြည်လမ်း',
+      owner_full_address: 'No. 123, Pyay Road, Dagon, Yangon',
+      merchant_label_en: 'Demo Shop',
+      merchant_label_mm: 'သရုပ်ပြဆိုင်',
+      company_name_en: 'Demo Company Ltd',
+      company_name_mm: 'သရုပ်ပြကုမ္ပဏီလီမိတက်',
+      company_short_name_en: 'DCL',
+      company_short_name_mm: 'သရုပ်ပြ',
+      business_name_en: 'Demo Business',
+      business_name_mm: 'သရုပ်ပြလုပ်ငန်း',
+      mcc_group: 'Retail',
+      mcc_name: 'Grocery Stores',
+      mcc_code: '5411',
+      dica_grn_rcdc: 'DICA-123456',
+      merchant_region: 'Yangon',
+      merchant_township: 'Dagon',
+      merchant_district: 'Yangon West',
+      merchant_city_en: 'Yangon',
+      merchant_city_mm: 'ရန်ကုန်',
+      merchant_postal_code: '11181',
+      merchant_house_no_en: 'No. 123',
+      merchant_street_en: 'Pyay Road',
+      merchant_house_no_mm: 'အမှတ် ၁၂၃',
+      merchant_street_mm: 'ပြည်လမ်း',
+      merchant_full_address: 'No. 123, Pyay Road, Dagon, Yangon',
+      latitude: '16.8409',
+      longitude: '96.1735',
+    }));
+  };
+
   const resetForm = () => {
     setFormData({
       id: 'MOB-' + Math.random().toString(36).substring(2, 10).toUpperCase(),
@@ -461,7 +520,11 @@ export default function OnboardingForm() {
       setIsSubmitted(true);
     } catch (err: any) {
       console.error('Submission error:', err);
-      alert('Submission failed: ' + err.message);
+      let msg = err.message;
+      if (msg.toLowerCase().includes('apikey') || msg.toLowerCase().includes('jwt') || msg.includes('401')) {
+        msg = 'Invalid API Key. Please ensure VITE_SUPABASE_ANON_KEY is correct in Netlify settings.';
+      }
+      alert('Submission failed: ' + msg);
     } finally {
       setIsSubmitting(false);
     }
@@ -735,9 +798,17 @@ export default function OnboardingForm() {
             {/* Step 1: Application */}
             {currentStep === 1 && (
               <div className="space-y-6">
-                <div className="flex items-center gap-2 text-[13px] font-semibold text-text3 uppercase tracking-widest border-b border-border pb-3">
-                  <div className="w-1 h-4 bg-accent rounded-full" />
-                  Application Information
+                <div className="flex items-center justify-between border-b border-border pb-3">
+                  <div className="flex items-center gap-2 text-[13px] font-semibold text-text3 uppercase tracking-widest">
+                    <div className="w-1 h-4 bg-accent rounded-full" />
+                    Application Information
+                  </div>
+                  <button 
+                    onClick={fillDemoData}
+                    className="text-[10px] font-bold bg-accent/10 text-accent px-2 py-1 rounded-sm hover:bg-accent hover:text-white transition-all uppercase tracking-tighter"
+                  >
+                    ⚡ Fill Demo
+                  </button>
                 </div>
                 <div className="flex gap-3">
                   {renderField('f_id', 'Application ID', 'text', '', [], false, true)}
