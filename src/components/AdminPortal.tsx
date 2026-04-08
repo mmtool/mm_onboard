@@ -16,7 +16,11 @@ import {
   ShieldCheck,
   Edit2,
   Save,
-  FileDown
+  FileDown,
+  FileText,
+  RefreshCw,
+  Copy,
+  Map as MapIcon
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { jsPDF } from 'jspdf';
@@ -60,7 +64,6 @@ interface Application {
   doc_shop_photo?: string;
   doc_nrc_front?: string;
   doc_nrc_back?: string;
-  doc_signature?: string;
 }
 
 export default function AdminPortal() {
@@ -71,35 +74,45 @@ export default function AdminPortal() {
   const [selectedApp, setSelectedApp] = useState<Application | null>(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editData, setEditData] = useState<Partial<Application>>({});
-  const [signatureUrl, setSignatureUrl] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (selectedApp?.doc_signature) {
-      const fetchSig = async () => {
-        const { data } = await supabase.storage
-          .from('merchant-signatures')
-          .createSignedUrl(selectedApp.doc_signature, 3600);
-        setSignatureUrl(data?.signedUrl || null);
-      };
-      fetchSig();
-    } else {
-      setSignatureUrl(null);
-    }
-  }, [selectedApp]);
 
   const [isAuth, setIsAuth] = useState(false);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [authLoading, setAuthLoading] = useState(false);
+  const [timeline, setTimeline] = useState<any[]>([]);
+  const [stats, setStats] = useState({ total: 0, pending: 0, approved: 0, rejected: 0 });
+  const [note, setNote] = useState('');
+  const [isSavingNote, setIsSavingNote] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isSeeding, setIsSeeding] = useState(false);
 
   useEffect(() => {
     checkAuth();
   }, []);
 
+  useEffect(() => {
+    if (applications.length > 0) {
+      setStats({
+        total: applications.length,
+        pending: applications.filter(a => a.status === 'pending').length,
+        approved: applications.filter(a => a.status === 'approved').length,
+        rejected: applications.filter(a => a.status === 'rejected').length,
+      });
+    }
+  }, [applications]);
+
+  useEffect(() => {
+    if (selectedApp) {
+      loadTimeline(selectedApp.id);
+    }
+  }, [selectedApp]);
+
   const checkAuth = async () => {
     const { data: { session } } = await supabase.auth.getSession();
     if (session) {
       setIsAuth(true);
+      setUserEmail(session.user.email || null);
       loadApplications();
     } else {
       setLoading(false);
@@ -109,11 +122,12 @@ export default function AdminPortal() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setAuthLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) {
       alert('Login failed: ' + error.message);
     } else {
       setIsAuth(true);
+      setUserEmail(data.user?.email || null);
       loadApplications();
     }
     setAuthLoading(false);
@@ -127,18 +141,86 @@ export default function AdminPortal() {
 
   const loadApplications = async () => {
     setLoading(true);
+    setError(null);
     try {
       const { data, error } = await supabase
         .from('merchant_applications')
         .select('*')
         .order('submitted_at', { ascending: false });
       
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase Error:', error);
+        throw error;
+      }
       setApplications(data || []);
     } catch (err: any) {
       console.error('Error loading applications:', err);
+      setError(err.message || 'Failed to load applications. Please check your Supabase connection and table setup.');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const seedTestData = async () => {
+    setIsSeeding(true);
+    try {
+      const testId = 'TEST-' + Math.random().toString(36).substring(2, 7).toUpperCase();
+      const { error } = await supabase.from('merchant_applications').insert({
+        id: testId,
+        merchant_label_en: 'Test Merchant ' + testId,
+        applicant_email: 'test@example.com',
+        status: 'pending',
+        submitted_at: new Date().toISOString(),
+        company_name_en: 'Test Company',
+        mcc_name: 'Test MCC',
+        onboard_by: 'Admin Seed'
+      });
+
+      if (error) throw error;
+      alert('Test data seeded successfully!');
+      loadApplications();
+    } catch (err: any) {
+      alert('Seeding failed: ' + err.message);
+    } finally {
+      setIsSeeding(false);
+    }
+  };
+
+  const loadTimeline = async (appId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from('application_timeline')
+        .select('*')
+        .eq('app_id', appId)
+        .order('created_at', { ascending: false });
+      
+      if (error) throw error;
+      setTimeline(data || []);
+    } catch (err: any) {
+      console.error('Error loading timeline:', err);
+    }
+  };
+
+  const saveNote = async () => {
+    if (!selectedApp || !note.trim()) return;
+    setIsSavingNote(true);
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      const { error } = await supabase.from('application_timeline').insert({
+        app_id: selectedApp.id,
+        action: 'Admin Note',
+        note: note.trim(),
+        performed_by: user?.id
+      });
+
+      if (error) throw error;
+      setNote('');
+      loadTimeline(selectedApp.id);
+      alert('Note saved successfully');
+    } catch (err: any) {
+      alert('Failed to save note: ' + err.message);
+    } finally {
+      setIsSavingNote(false);
     }
   };
 
@@ -257,6 +339,16 @@ export default function AdminPortal() {
     return matchesFilter && matchesSearch;
   });
 
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    alert('Copied to clipboard: ' + text);
+  };
+
+  const openInMap = (lat: string, lng: string) => {
+    if (!lat || !lng) return;
+    window.open(`https://www.google.com/maps?q=${lat},${lng}`, '_blank');
+  };
+
   if (!isAuth) {
     return (
       <div className="min-h-screen bg-bg flex items-center justify-center p-6">
@@ -365,13 +457,20 @@ export default function AdminPortal() {
           </div>
           <div className="flex items-center gap-4">
             <button 
+              onClick={loadApplications}
+              className="p-2 text-text3 hover:text-accent transition-all"
+              title="Refresh Data"
+            >
+              <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+            </button>
+            <button 
               onClick={exportCSV}
               className="btn btn-ghost flex items-center gap-2 text-xs"
             >
               <FileDown className="w-4 h-4" /> Export CSV
             </button>
             <div className="text-right hidden sm:block">
-              <div className="text-sm font-medium">Admin User</div>
+              <div className="text-sm font-medium">{userEmail || 'Admin User'}</div>
               <div className="text-[10px] text-text3 uppercase tracking-wider">Super Admin</div>
             </div>
             <div className="w-9 h-9 rounded-full bg-surface2 border border-border flex items-center justify-center">
@@ -381,7 +480,33 @@ export default function AdminPortal() {
         </header>
 
         {/* Table Area */}
-        <div className="flex-1 overflow-auto p-6">
+        <div className="flex-1 overflow-auto p-6 space-y-6">
+          {/* Stats Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            {[
+              { label: 'Total Applications', value: stats.total, color: 'bg-accent', icon: FileText },
+              { label: 'Pending Review', value: stats.pending, color: 'bg-warning', icon: Clock },
+              { label: 'Approved', value: stats.approved, color: 'bg-success', icon: CheckCircle2 },
+              { label: 'Rejected', value: stats.rejected, color: 'bg-danger', icon: XCircle },
+            ].map((stat, i) => (
+              <motion.div 
+                key={stat.label}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-surface border border-border p-5 rounded-lg flex items-center gap-4"
+              >
+                <div className={`w-12 h-12 ${stat.color}/10 rounded-lg flex items-center justify-center`}>
+                  <stat.icon className={`w-6 h-6 ${stat.color.replace('bg-', 'text-')}`} />
+                </div>
+                <div>
+                  <div className="text-[10px] font-bold text-text3 uppercase tracking-widest">{stat.label}</div>
+                  <div className="text-2xl font-bold">{stat.value}</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
           <div className="bg-surface border border-border rounded-lg overflow-hidden">
             <table className="w-full text-left border-collapse">
               <thead>
@@ -401,17 +526,40 @@ export default function AdminPortal() {
                       <div className="text-text3 text-sm">Loading applications...</div>
                     </td>
                   </tr>
+                ) : error ? (
+                  <tr>
+                    <td colSpan={5} className="p-12 text-center">
+                      <div className="text-danger text-sm mb-4">{error}</div>
+                      <button onClick={loadApplications} className="btn btn-primary btn-sm">Retry</button>
+                    </td>
+                  </tr>
                 ) : filteredApps.length === 0 ? (
                   <tr>
                     <td colSpan={5} className="p-12 text-center">
-                      <div className="text-text3 text-sm">No applications found</div>
+                      <div className="text-text3 text-sm mb-4">No applications found</div>
+                      <button 
+                        onClick={seedTestData} 
+                        disabled={isSeeding}
+                        className="text-xs text-accent hover:underline font-bold uppercase tracking-widest"
+                      >
+                        {isSeeding ? 'Seeding...' : 'Seed Test Data'}
+                      </button>
                     </td>
                   </tr>
                 ) : (
                   filteredApps.map(app => (
                     <tr key={app.id} className="border-b border-border hover:bg-surface2/50 transition-colors">
                       <td className="p-4">
-                        <div className="font-mono text-xs font-bold text-accent2">{app.id}</div>
+                        <div className="flex items-center gap-2">
+                          <div className="font-mono text-xs font-bold text-accent2">{app.id}</div>
+                          <button 
+                            onClick={() => copyToClipboard(app.id)}
+                            className="p-1 text-text3 hover:text-accent transition-all"
+                            title="Copy ID"
+                          >
+                            <Copy className="w-3 h-3" />
+                          </button>
+                        </div>
                         <div className="text-xs text-text3 mt-1">{app.applicant_email}</div>
                       </td>
                       <td className="p-4">
@@ -551,7 +699,19 @@ export default function AdminPortal() {
                             className="w-full bg-bg border border-border rounded-sm p-1 text-sm outline-none focus:border-accent"
                           />
                         ) : (
-                          <div className="text-sm font-medium">{selectedApp[item.key as keyof Application] || '—'}</div>
+                          <div className="flex items-center justify-between">
+                            <div className="text-sm font-medium">{selectedApp[item.key as keyof Application] || '—'}</div>
+                            {item.key === 'id' && (
+                              <button onClick={() => copyToClipboard(selectedApp.id)} className="p-1 text-text3 hover:text-accent">
+                                <Copy className="w-3 h-3" />
+                              </button>
+                            )}
+                            {(item.key === 'latitude' || item.key === 'longitude') && selectedApp.latitude && selectedApp.longitude && (
+                              <button onClick={() => openInMap(selectedApp.latitude, selectedApp.longitude)} className="p-1 text-text3 hover:text-accent">
+                                <MapIcon className="w-3 h-3" />
+                              </button>
+                            )}
+                          </div>
                         )}
                       </div>
                     ))}
@@ -566,7 +726,6 @@ export default function AdminPortal() {
                         { id: 'shop_photo', label: 'Shop Photo', bucket: 'merchant-photos' },
                         { id: 'nrc_front', label: 'NRC Front', bucket: 'merchant-docs' },
                         { id: 'nrc_back', label: 'NRC Back', bucket: 'merchant-docs' },
-                        { id: 'signature', label: 'Signature', bucket: 'merchant-signatures' },
                       ].map(doc => {
                         const path = selectedApp[`doc_${doc.id}` as keyof Application] as string;
                         return (
@@ -629,12 +788,43 @@ export default function AdminPortal() {
                   </div>
 
                   <div className="bg-surface2 p-5 rounded-sm border border-border space-y-4">
+                    <h3 className="text-xs font-bold text-text3 uppercase tracking-widest">Timeline</h3>
+                    <div className="space-y-4 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                      {timeline.length === 0 ? (
+                        <div className="text-xs text-text3 italic">No history available</div>
+                      ) : (
+                        timeline.map((event, i) => (
+                          <div key={event.id} className="relative pl-6 pb-4 last:pb-0">
+                            {i !== timeline.length - 1 && (
+                              <div className="absolute left-[7px] top-4 bottom-0 w-0.5 bg-border" />
+                            )}
+                            <div className="absolute left-0 top-1.5 w-4 h-4 rounded-full bg-accent/20 flex items-center justify-center">
+                              <div className="w-1.5 h-1.5 rounded-full bg-accent" />
+                            </div>
+                            <div className="text-xs font-bold">{event.action}</div>
+                            {event.note && <div className="text-[10px] text-text3 mt-0.5">{event.note}</div>}
+                            <div className="text-[9px] text-text3 mt-1">{new Date(event.created_at).toLocaleString()}</div>
+                          </div>
+                        ))
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="bg-surface2 p-5 rounded-sm border border-border space-y-4">
                     <h3 className="text-xs font-bold text-text3 uppercase tracking-widest">Notes</h3>
                     <textarea 
+                      value={note}
+                      onChange={e => setNote(e.target.value)}
                       className="w-full bg-bg border border-border rounded-sm p-3 text-sm outline-none focus:border-accent min-h-[100px]"
                       placeholder="Add internal review notes..."
                     />
-                    <button className="w-full btn btn-ghost text-xs">Save Note</button>
+                    <button 
+                      onClick={saveNote}
+                      disabled={isSavingNote || !note.trim()}
+                      className="w-full btn btn-ghost text-xs flex items-center justify-center gap-2"
+                    >
+                      {isSavingNote ? <Loader2 className="w-3 h-3 animate-spin" /> : 'Save Note'}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -748,7 +938,6 @@ export default function AdminPortal() {
                 <div className="text-[10px] uppercase font-bold text-slate-400">Date</div>
               </div>
               <div className="text-center">
-                {signatureUrl && <img src={signatureUrl} className="h-16 mx-auto mb-2" crossOrigin="anonymous" />}
                 <div className="w-48 border-b border-slate-400 mb-2"></div>
                 <div className="text-[10px] uppercase font-bold text-slate-400">Merchant Signature</div>
               </div>

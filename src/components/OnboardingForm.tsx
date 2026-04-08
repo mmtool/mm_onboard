@@ -5,7 +5,6 @@ import {
   User, 
   MapPin, 
   FileText, 
-  PenTool, 
   CheckCircle2, 
   ChevronRight, 
   ChevronLeft, 
@@ -16,7 +15,6 @@ import {
   AlertCircle,
   Loader2
 } from 'lucide-react';
-import SignaturePad from 'react-signature-pad-wrapper';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { supabase } from '../lib/supabase';
@@ -160,13 +158,10 @@ export default function OnboardingForm() {
   const [mccData, setMccData] = useState<MccRecord[]>([]);
   const [nrcData, setNrcData] = useState<NrcData | null>(null);
   const [files, setFiles] = useState<Record<string, File>>({});
-  const [sigDataUrl, setSigDataUrl] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [sameAddress, setSameAddress] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-
-  const sigCanvas = useRef<SignaturePad>(null);
 
   // --- Effects ---
   useEffect(() => {
@@ -316,7 +311,6 @@ export default function OnboardingForm() {
       open_24_7: true,
     });
     setFiles({});
-    setSigDataUrl(null);
     setCurrentStep(1);
     setIsSubmitted(false);
     setSameAddress(false);
@@ -471,16 +465,6 @@ export default function OnboardingForm() {
       setCurrentStep(currentStep - 1);
       window.scrollTo(0, 0);
     }
-  };
-
-  const clearSig = () => {
-    sigCanvas.current?.clear();
-    setSigDataUrl(null);
-  };
-
-  const saveSig = () => {
-    if (sigCanvas.current?.isEmpty()) return;
-    setSigDataUrl(sigCanvas.current?.toDataURL() || null);
   };
 
   const submitApplication = async () => {
@@ -676,7 +660,6 @@ export default function OnboardingForm() {
             <div className="text-[10px] uppercase font-bold text-slate-400">Date</div>
           </div>
           <div className="text-center">
-            {sigDataUrl && <img src={sigDataUrl} className="h-16 mx-auto mb-2" />}
             <div className="w-48 border-b border-slate-400 mb-2"></div>
             <div className="text-[10px] uppercase font-bold text-slate-400">Merchant Signature</div>
           </div>
