@@ -20,7 +20,8 @@ import {
   FileText,
   RefreshCw,
   Copy,
-  Map as MapIcon
+  Map as MapIcon,
+  AlertCircle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { jsPDF } from 'jspdf';
@@ -86,9 +87,27 @@ export default function AdminPortal() {
   const [isSavingNote, setIsSavingNote] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isSeeding, setIsSeeding] = useState(false);
+  const [schemaStatus, setSchemaStatus] = useState<'checking' | 'ok' | 'error' | null>(null);
 
   useEffect(() => {
     checkAuth();
+    checkSchema();
+
+    // Set up real-time subscription
+    const subscription = supabase
+      .channel('merchant_applications_changes')
+      .on('postgres_changes', { 
+        event: '*', 
+        schema: 'public', 
+        table: 'merchant_applications' 
+      }, () => {
+        loadApplications();
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(subscription);
+    };
   }, []);
 
   useEffect(() => {
@@ -158,6 +177,19 @@ export default function AdminPortal() {
       setError(err.message || 'Failed to load applications. Please check your Supabase connection and table setup.');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const checkSchema = async () => {
+    setSchemaStatus('checking');
+    try {
+      // Try to fetch 1 row to see if table exists
+      const { error } = await supabase.from('merchant_applications').select('id').limit(1);
+      if (error) throw error;
+      setSchemaStatus('ok');
+    } catch (err: any) {
+      console.error('Schema check failed:', err);
+      setSchemaStatus('error');
     }
   };
 
@@ -456,6 +488,11 @@ export default function AdminPortal() {
             </div>
           </div>
           <div className="flex items-center gap-4">
+            {schemaStatus === 'error' && (
+              <div className="flex items-center gap-2 px-3 py-1 bg-danger/10 text-danger border border-danger/20 rounded-full text-[10px] font-bold uppercase">
+                <AlertCircle className="w-3 h-3" /> Schema Error
+              </div>
+            )}
             <button 
               onClick={loadApplications}
               className="p-2 text-text3 hover:text-accent transition-all"
