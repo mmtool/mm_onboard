@@ -943,7 +943,6 @@ export default function OnboardingForm() {
                   {[
                     { id: 'business_doc', label: 'Business Doc', icon: FileText },
                     { id: 'agreement', label: 'Agreement', icon: File },
-                    { id: 'bod', label: 'BOD', icon: Building2 },
                     { id: 'shop_photo', label: 'Shop Photo', icon: MapPin },
                     { id: 'nrc_front', label: 'NRC Front', icon: User },
                     { id: 'nrc_back', label: 'NRC Back', icon: User },

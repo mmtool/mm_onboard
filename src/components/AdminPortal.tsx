@@ -604,6 +604,16 @@ export default function AdminPortal() {
         </div>
       </main>
 
+      {/* Debug Info for Netlify Troubleshooting */}
+      <div className="fixed bottom-4 left-4 flex gap-4 text-[9px] font-mono text-text3 uppercase tracking-widest opacity-50 z-50">
+        <span className={import.meta.env.VITE_SUPABASE_URL ? 'text-success' : 'text-danger'}>
+          URL: {import.meta.env.VITE_SUPABASE_URL ? 'LOADED' : 'MISSING'}
+        </span>
+        <span className={import.meta.env.VITE_SUPABASE_ANON_KEY ? 'text-success' : 'text-danger'}>
+          KEY: {import.meta.env.VITE_SUPABASE_ANON_KEY ? 'LOADED' : 'MISSING'}
+        </span>
+      </div>
+
       {/* Detail Modal */}
       <AnimatePresence>
         {selectedApp && (
