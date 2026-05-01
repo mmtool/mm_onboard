@@ -20,18 +20,20 @@ import {
   FileText,
   RefreshCw,
   Copy,
+  Users,
   Map as MapIcon,
   AlertCircle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { jsPDF } from 'jspdf';
-import html2canvas from 'html2canvas';
 import { supabase } from '../lib/supabase';
 
 interface Application {
   id: string;
   submitted_at: string;
-  status: 'pending' | 'review' | 'approved' | 'rejected';
+  status: 'pending' | 'review_requested' | 'approved' | 'rejected';
+  workflow_status: 'draft' | 'submitted' | 'pending_review' | 'completed';
+  maker_id?: string;
+  checker_id?: string;
   merchant_label_en: string;
   merchant_label_mm: string;
   company_name_en: string;
@@ -78,6 +80,7 @@ export default function AdminPortal() {
 
   const [isAuth, setIsAuth] = useState(false);
   const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [userRole, setUserRole] = useState<'maker' | 'checker' | 'admin' | null>(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [authLoading, setAuthLoading] = useState(false);
@@ -88,6 +91,10 @@ export default function AdminPortal() {
   const [error, setError] = useState<string | null>(null);
   const [isSeeding, setIsSeeding] = useState(false);
   const [schemaStatus, setSchemaStatus] = useState<'checking' | 'ok' | 'error' | null>(null);
+  const [emailLogs, setEmailLogs] = useState<any[]>([]);
+  const [showEmailLogs, setShowEmailLogs] = useState(false);
+  const [allUsers, setAllUsers] = useState<any[]>([]);
+  const [showUserManagement, setShowUserManagement] = useState(false);
 
   useEffect(() => {
     checkAuth();
@@ -132,6 +139,26 @@ export default function AdminPortal() {
     if (session) {
       setIsAuth(true);
       setUserEmail(session.user.email || null);
+      
+      // Fetch user role
+      const { data: profile } = await supabase
+        .from('user_profiles')
+        .select('role')
+        .eq('id', session.user.id)
+        .single();
+      
+      if (profile) {
+        setUserRole(profile.role as any);
+      } else {
+        // Auto-create profile if missing (first time)
+        const { data: newProfile } = await supabase.from('user_profiles').insert({
+          id: session.user.id,
+          email: session.user.email,
+          role: 'maker' // Default to maker
+        }).select().single();
+        if (newProfile) setUserRole(newProfile.role as any);
+      }
+
       loadApplications();
     } else {
       setLoading(false);
@@ -218,6 +245,45 @@ export default function AdminPortal() {
     }
   };
 
+  const loadEmailLogs = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('email_logs')
+        .select('*')
+        .order('created_at', { ascending: false });
+      if (error) throw error;
+      setEmailLogs(data || []);
+    } catch (err) {
+      console.error('Error loading email logs:', err);
+    }
+  };
+
+  const loadUsers = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('user_profiles')
+        .select('*')
+        .order('created_at', { ascending: false });
+      if (error) throw error;
+      setAllUsers(data || []);
+    } catch (err) {
+      console.error('Error loading users:', err);
+    }
+  };
+
+  const updateUserRole = async (userId: string, newRole: string) => {
+    try {
+      const { error } = await supabase
+        .from('user_profiles')
+        .update({ role: newRole })
+        .eq('id', userId);
+      if (error) throw error;
+      loadUsers();
+      alert('User role updated successfully');
+    } catch (err: any) {
+      alert('Update failed: ' + err.message);
+    }
+  };
   const loadTimeline = async (appId: string) => {
     try {
       const { data, error } = await supabase
@@ -256,30 +322,67 @@ export default function AdminPortal() {
     }
   };
 
-  const updateStatus = async (id: string, status: 'approved' | 'rejected') => {
+  const handleStatusUpdate = async (id: string, newStatus: Application['status'], workflowStatus?: Application['workflow_status']) => {
     try {
       const { data: { user } } = await supabase.auth.getUser();
+      const updates: any = { 
+        status: newStatus,
+        workflow_status: workflowStatus || (newStatus === 'approved' ? 'completed' : 'pending_review')
+      };
+      
+      if (newStatus === 'approved') {
+        updates.approved_at = new Date().toISOString();
+        updates.checker_id = user?.id;
+        updates.reviewed_by = user?.id;
+      } else if (newStatus === 'rejected') {
+        updates.rejected_at = new Date().toISOString();
+        updates.checker_id = user?.id;
+        updates.reviewed_by = user?.id;
+      } else if (newStatus === 'review_requested') {
+        updates.maker_id = user?.id;
+      }
+
       const { error } = await supabase
         .from('merchant_applications')
-        .update({ 
-          status, 
-          reviewed_by: user?.id,
-          [status === 'approved' ? 'approved_at' : 'rejected_at']: new Date().toISOString()
-        })
+        .update(updates)
         .eq('id', id);
 
       if (error) throw error;
 
+      // Log to timeline
       await supabase.from('application_timeline').insert({
         app_id: id,
-        action: status === 'approved' ? 'Approved by Admin' : 'Rejected by Admin',
+        action: `Status updated to ${newStatus}`,
+        note: `Action performed by ${userRole} (${userEmail})`,
         performed_by: user?.id
       });
 
-      setApplications(prev => prev.map(app => app.id === id ? { ...app, status } : app));
-      if (selectedApp?.id === id) setSelectedApp(prev => prev ? { ...prev, status } : null);
-      
-      alert(`Application ${status} successfully`);
+      // Send Email Notification (Simulation)
+      if (newStatus === 'approved' || newStatus === 'rejected') {
+        const app = applications.find(a => a.id === id);
+        const emailBody = `
+          Merchant Application ${newStatus.toUpperCase()}
+          ----------------------------------
+          Application ID: ${id}
+          Merchant: ${app?.merchant_label_en}
+          Email: ${app?.applicant_email}
+          
+          Status: ${newStatus}
+          Reviewer: ${userEmail}
+          Receiver: kaunghtet.min@mo.com.mm
+        `;
+
+        await supabase.from('email_logs').insert({
+          app_id: id,
+          recipient: 'kaunghtet.min@mo.com.mm',
+          subject: `Application ${newStatus}: ${app?.merchant_label_en}`,
+          body: emailBody
+        });
+      }
+
+      loadApplications();
+      setSelectedApp(null);
+      alert(`Application ${newStatus} successfully`);
     } catch (err: any) {
       alert('Update failed: ' + err.message);
     }
@@ -327,31 +430,53 @@ export default function AdminPortal() {
     document.body.removeChild(link);
   };
 
-  const downloadPDF = async () => {
-    const element = document.getElementById('admin-pdf-template');
-    if (!element) return;
+  const downloadMarkdown = (app: Application) => {
+    const mdContent = `
+# SHWEBANK Merchant Application
+**ID:** ${app.id}
+**Submitted At:** ${new Date(app.submitted_at).toLocaleString()}
+**Status:** ${app.status.toUpperCase()}
 
-    try {
-      const canvas = await html2canvas(element, {
-        scale: 2,
-        useCORS: true,
-        logging: false,
-        backgroundColor: '#ffffff',
-        windowWidth: 800
-      });
-      
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      const imgProps = pdf.getImageProperties(imgData);
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      
-      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save(`Application_${selectedApp?.id}.pdf`);
-    } catch (err) {
-      console.error('PDF generation error:', err);
-      alert('Failed to generate PDF');
-    }
+## 1. Application Information
+- **Onboarded By:** ${app.onboard_by}
+- **Applicant Email:** ${app.applicant_email}
+- **Phone Number:** ${app.merchant_phone_no}
+
+## 2. Personal Information
+- **Full Name (EN):** ${app.title} ${app.last_name}
+- **Full Name (MM):** ${app.title_mm} ${app.last_name_mm}
+- **Date of Birth:** ${app.dob}
+- **Father Name:** ${app.father_name}
+- **Gender:** ${app.gender}
+- **Marital Status:** ${app.marital_status}
+- **NRC Number:** ${app.nrc_full}
+
+## 3. Business Information
+- **Merchant Label (EN):** ${app.merchant_label_en}
+- **Merchant Label (MM):** ${app.merchant_label_mm}
+- **Company Name (EN):** ${app.company_name_en}
+- **MCC:** ${app.mcc_name} (${app.mcc_code})
+- **MCC Group:** ${app.mcc_group}
+- **DICA/GRN/RCDC:** ${app.dica_grn_rcdc}
+
+## 4. Address Details
+- **Owner Address:** ${app.owner_full_address}
+- **Merchant Address:** ${app.merchant_full_address}
+- **Coordinates:** ${app.latitude}, ${app.longitude}
+
+---
+Generated by SHWEBANK Admin Portal
+    `.trim();
+
+    const blob = new Blob([mdContent], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `shwebank_${app.id}.md`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   const getSignedUrl = async (path: string, bucket = 'merchant-docs') => {
@@ -368,6 +493,12 @@ export default function AdminPortal() {
     const matchesSearch = app.merchant_label_en.toLowerCase().includes(search.toLowerCase()) || 
                           app.id.toLowerCase().includes(search.toLowerCase()) ||
                           app.applicant_email.toLowerCase().includes(search.toLowerCase());
+    
+    // Role-based filtering: Checker only sees "Review Requested"
+    if (userRole === 'checker') {
+      return matchesFilter && matchesSearch && app.status === 'review_requested';
+    }
+    
     return matchesFilter && matchesSearch;
   });
 
@@ -493,6 +624,22 @@ export default function AdminPortal() {
                 <AlertCircle className="w-3 h-3" /> Schema Error
               </div>
             )}
+            {userRole === 'admin' && (
+              <button 
+                onClick={() => { setShowUserManagement(true); loadUsers(); }}
+                className="p-2 text-text3 hover:text-accent transition-all"
+                title="User Management"
+              >
+                <Users className="w-5 h-5" />
+              </button>
+            )}
+            <button 
+              onClick={() => { setShowEmailLogs(true); loadEmailLogs(); }}
+              className="p-2 text-text3 hover:text-accent transition-all"
+              title="View Email Logs"
+            >
+              <FileText className="w-5 h-5" />
+            </button>
             <button 
               onClick={loadApplications}
               className="p-2 text-text3 hover:text-accent transition-all"
@@ -508,7 +655,22 @@ export default function AdminPortal() {
             </button>
             <div className="text-right hidden sm:block">
               <div className="text-sm font-medium">{userEmail || 'Admin User'}</div>
-              <div className="text-[10px] text-text3 uppercase tracking-wider">Super Admin</div>
+              <select 
+                value={userRole || 'maker'} 
+                onChange={async (e) => {
+                  const newRole = e.target.value as any;
+                  setUserRole(newRole);
+                  const { data: { user } } = await supabase.auth.getUser();
+                  if (user) {
+                    await supabase.from('user_profiles').update({ role: newRole }).eq('id', user.id);
+                  }
+                }}
+                className="text-[10px] bg-transparent border-none text-accent font-bold uppercase tracking-wider outline-none cursor-pointer"
+              >
+                <option value="maker">Maker</option>
+                <option value="checker">Checker</option>
+                <option value="admin">Admin</option>
+              </select>
             </div>
             <div className="w-9 h-9 rounded-full bg-surface2 border border-border flex items-center justify-center">
               <User className="w-5 h-5 text-text2" />
@@ -611,12 +773,14 @@ export default function AdminPortal() {
                         <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
                           app.status === 'approved' ? 'bg-success/10 text-success border border-success/20' :
                           app.status === 'rejected' ? 'bg-danger/10 text-danger border border-danger/20' :
+                          app.status === 'review_requested' ? 'bg-accent/10 text-accent border border-accent/20' :
                           'bg-warning/10 text-warning border border-warning/20'
                         }`}>
                           {app.status === 'approved' ? <CheckCircle2 className="w-3 h-3" /> : 
                            app.status === 'rejected' ? <XCircle className="w-3 h-3" /> : 
+                           app.status === 'review_requested' ? <ShieldCheck className="w-3 h-3" /> :
                            <Clock className="w-3 h-3" />}
-                          {app.status}
+                          {app.status.replace('_', ' ')}
                         </span>
                       </td>
                       <td className="p-4">
@@ -651,6 +815,104 @@ export default function AdminPortal() {
         </span>
       </div>
 
+      {/* User Management Modal */}
+      {showUserManagement && (
+        <div className="fixed inset-0 bg-bg/80 backdrop-blur-sm z-[60] flex items-center justify-center p-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-surface border border-border rounded-lg shadow-2xl w-full max-w-4xl max-h-[80vh] flex flex-col"
+          >
+            <div className="p-6 border-b border-border flex justify-between items-center">
+              <h2 className="text-lg font-bold">User Management</h2>
+              <button onClick={() => setShowUserManagement(false)} className="p-1.5 bg-surface2 border border-border rounded-sm text-text2">
+                <XCircle className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto p-6">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className="py-3 px-4 text-xs font-bold text-text3 uppercase">Email</th>
+                      <th className="py-3 px-4 text-xs font-bold text-text3 uppercase">Current Role</th>
+                      <th className="py-3 px-4 text-xs font-bold text-text3 uppercase">Change Role</th>
+                      <th className="py-3 px-4 text-xs font-bold text-text3 uppercase">Joined</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {allUsers.map(user => (
+                      <tr key={user.id} className="border-b border-border/50 hover:bg-surface2/50 transition-colors">
+                        <td className="py-3 px-4 text-sm font-medium">{user.email}</td>
+                        <td className="py-3 px-4">
+                          <span className={`px-2 py-1 rounded-full text-[10px] font-bold uppercase ${
+                            user.role === 'admin' ? 'bg-accent/10 text-accent' :
+                            user.role === 'checker' ? 'bg-success/10 text-success' :
+                            'bg-text3/10 text-text3'
+                          }`}>
+                            {user.role}
+                          </span>
+                        </td>
+                        <td className="py-3 px-4">
+                          <select 
+                            value={user.role}
+                            onChange={(e) => updateUserRole(user.id, e.target.value)}
+                            className="bg-bg border border-border rounded px-2 py-1 text-xs outline-none focus:border-accent"
+                          >
+                            <option value="maker">Maker</option>
+                            <option value="checker">Checker</option>
+                            <option value="admin">Admin</option>
+                          </select>
+                        </td>
+                        <td className="py-3 px-4 text-xs text-text3">
+                          {new Date(user.created_at).toLocaleDateString()}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
+      {/* Email Logs Modal */}
+      {showEmailLogs && (
+        <div className="fixed inset-0 bg-bg/80 backdrop-blur-sm z-[60] flex items-center justify-center p-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-surface border border-border rounded-lg shadow-2xl w-full max-w-4xl max-h-[80vh] flex flex-col"
+          >
+            <div className="p-6 border-b border-border flex justify-between items-center">
+              <h2 className="text-lg font-bold">Email Notification Logs</h2>
+              <button onClick={() => setShowEmailLogs(false)} className="p-1.5 bg-surface2 border border-border rounded-sm text-text2">
+                <XCircle className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto p-6 space-y-4">
+              {emailLogs.length === 0 ? (
+                <div className="text-center py-12 text-text3 italic">No email logs found</div>
+              ) : (
+                emailLogs.map(log => (
+                  <div key={log.id} className="bg-surface2 p-4 rounded-sm border border-border space-y-2">
+                    <div className="flex justify-between items-start">
+                      <div className="text-xs font-bold text-accent uppercase tracking-wider">{log.subject}</div>
+                      <div className="text-[10px] text-text3">{new Date(log.created_at).toLocaleString()}</div>
+                    </div>
+                    <div className="text-[11px] text-text2">To: {log.recipient}</div>
+                    <pre className="text-[10px] text-text3 bg-bg p-3 rounded-sm overflow-x-auto whitespace-pre-wrap font-mono">
+                      {log.body}
+                    </pre>
+                  </div>
+                ))
+              )}
+            </div>
+          </motion.div>
+        </div>
+      )}
+
       {/* Detail Modal */}
       <AnimatePresence>
         {selectedApp && (
@@ -679,9 +941,9 @@ export default function AdminPortal() {
                 </div>
                 <div className="flex items-center gap-2">
                   <button 
-                    onClick={downloadPDF}
+                    onClick={() => downloadMarkdown(selectedApp)}
                     className="p-1.5 bg-surface2 border border-border rounded-sm text-text2 hover:text-accent"
-                    title="Download PDF"
+                    title="Download Markdown"
                   >
                     <Download className="w-5 h-5" />
                   </button>
@@ -704,64 +966,80 @@ export default function AdminPortal() {
               <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-8 max-h-[75vh] overflow-y-auto custom-scrollbar">
                 {/* Left Column: Info */}
                 <div className="md:col-span-2 space-y-8">
-                  <div className="grid grid-cols-2 gap-4">
-                    {[
-                      { label: 'Application ID', key: 'id', readOnly: true },
-                      { label: 'Merchant Label (EN)', key: 'merchant_label_en' },
-                      { label: 'Merchant Label (MM)', key: 'merchant_label_mm' },
-                      { label: 'Company Name (EN)', key: 'company_name_en' },
-                      { label: 'Company Name (MM)', key: 'company_name_mm' },
-                      { label: 'Short Name (EN)', key: 'company_short_name_en' },
-                      { label: 'Short Name (MM)', key: 'company_short_name_mm' },
-                      { label: 'Business Name (EN)', key: 'business_name_en' },
-                      { label: 'Business Name (MM)', key: 'business_name_mm' },
-                      { label: 'Title', key: 'title' },
-                      { label: 'Title (MM)', key: 'title_mm' },
-                      { label: 'Last Name', key: 'last_name' },
-                      { label: 'Last Name (MM)', key: 'last_name_mm' },
-                      { label: 'Applicant Email', key: 'applicant_email' },
-                      { label: 'Phone Number', key: 'merchant_phone_no' },
-                      { label: 'DOB', key: 'dob' },
-                      { label: 'Father Name', key: 'father_name' },
-                      { label: 'Gender', key: 'gender' },
-                      { label: 'Marital Status', key: 'marital_status' },
-                      { label: 'NRC Full', key: 'nrc_full' },
-                      { label: 'MCC Name', key: 'mcc_name' },
-                      { label: 'MCC Code', key: 'mcc_code' },
-                      { label: 'MCC Group', key: 'mcc_group' },
-                      { label: 'Onboarded By', key: 'onboard_by' },
-                      { label: 'DICA/GRN/RCDC', key: 'dica_grn_rcdc' },
-                      { label: 'Latitude', key: 'latitude' },
-                      { label: 'Longitude', key: 'longitude' },
-                      { label: 'Owner Address', key: 'owner_full_address', full: true },
-                      { label: 'Merchant Address', key: 'merchant_full_address', full: true },
-                    ].map(item => (
-                      <div key={item.label} className={`bg-surface2 p-4 rounded-sm border border-border/50 ${item.full ? 'col-span-2' : ''}`}>
-                        <div className="text-[10px] text-text3 uppercase tracking-wider mb-1">{item.label}</div>
-                        {isEditing && !item.readOnly ? (
-                          <input 
-                            type="text"
-                            value={editData[item.key as keyof Application] || ''}
-                            onChange={e => setEditData(prev => ({ ...prev, [item.key]: e.target.value }))}
-                            className="w-full bg-bg border border-border rounded-sm p-1 text-sm outline-none focus:border-accent"
-                          />
-                        ) : (
-                          <div className="flex items-center justify-between">
-                            <div className="text-sm font-medium">{selectedApp[item.key as keyof Application] || '—'}</div>
-                            {item.key === 'id' && (
-                              <button onClick={() => copyToClipboard(selectedApp.id)} className="p-1 text-text3 hover:text-accent">
-                                <Copy className="w-3 h-3" />
-                              </button>
-                            )}
-                            {(item.key === 'latitude' || item.key === 'longitude') && selectedApp.latitude && selectedApp.longitude && (
-                              <button onClick={() => openInMap(selectedApp.latitude, selectedApp.longitude)} className="p-1 text-text3 hover:text-accent">
-                                <MapIcon className="w-3 h-3" />
-                              </button>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    ))}
+                  <div className="bg-bg border border-border rounded-lg overflow-hidden">
+                    <table className="w-full text-left border-collapse">
+                      <thead>
+                        <tr className="bg-surface2 border-b border-border">
+                          <th className="py-3 px-4 text-[10px] font-bold text-text3 uppercase w-1/3">Field</th>
+                          <th className="py-3 px-4 text-[10px] font-bold text-text3 uppercase">Value / Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {[
+                          { label: 'Application ID', key: 'id', readOnly: true },
+                          { label: 'Merchant Label (EN)', key: 'merchant_label_en' },
+                          { label: 'Merchant Label (MM)', key: 'merchant_label_mm' },
+                          { label: 'Company Name (EN)', key: 'company_name_en' },
+                          { label: 'Company Name (MM)', key: 'company_name_mm' },
+                          { label: 'Short Name (EN)', key: 'company_short_name_en' },
+                          { label: 'Short Name (MM)', key: 'company_short_name_mm' },
+                          { label: 'Business Name (EN)', key: 'business_name_en' },
+                          { label: 'Business Name (MM)', key: 'business_name_mm' },
+                          { label: 'Title', key: 'title' },
+                          { label: 'Title (MM)', key: 'title_mm' },
+                          { label: 'Last Name', key: 'last_name' },
+                          { label: 'Last Name (MM)', key: 'last_name_mm' },
+                          { label: 'Applicant Email', key: 'applicant_email' },
+                          { label: 'Phone Number', key: 'merchant_phone_no' },
+                          { label: 'DOB', key: 'dob' },
+                          { label: 'Father Name', key: 'father_name' },
+                          { label: 'Gender', key: 'gender' },
+                          { label: 'Marital Status', key: 'marital_status' },
+                          { label: 'NRC Full', key: 'nrc_full' },
+                          { label: 'MCC Name', key: 'mcc_name' },
+                          { label: 'MCC Code', key: 'mcc_code' },
+                          { label: 'MCC Group', key: 'mcc_group' },
+                          { label: 'Onboarded By', key: 'onboard_by' },
+                          { label: 'DICA/GRN/RCDC', key: 'dica_grn_rcdc' },
+                          { label: 'Latitude', key: 'latitude' },
+                          { label: 'Longitude', key: 'longitude' },
+                          { label: 'Owner Address', key: 'owner_full_address' },
+                          { label: 'Merchant Address', key: 'merchant_full_address' },
+                        ].map(item => (
+                          <tr key={item.label} className="border-b border-border last:border-0 hover:bg-surface2/50 transition-colors">
+                            <td className="py-3 px-4 text-xs font-semibold text-text2 bg-surface2/30">{item.label}</td>
+                            <td className="py-3 px-4">
+                              {isEditing && !item.readOnly ? (
+                                <input 
+                                  type="text"
+                                  value={editData[item.key as keyof Application] || ''}
+                                  onChange={e => setEditData(prev => ({ ...prev, [item.key]: e.target.value }))}
+                                  className="w-full bg-surface2 border border-border rounded-sm p-1.5 text-xs outline-none focus:border-accent"
+                                />
+                              ) : (
+                                <div className="flex items-center justify-between group">
+                                  <div className="text-xs break-all">{selectedApp[item.key as keyof Application] || '—'}</div>
+                                  <div className="flex items-center gap-1">
+                                    <button 
+                                      onClick={() => copyToClipboard(selectedApp[item.key as keyof Application] as string)} 
+                                      className="p-1.5 text-text3 hover:text-accent opacity-0 group-hover:opacity-100 transition-opacity"
+                                      title="Copy Value"
+                                    >
+                                      <Copy className="w-3.5 h-3.5" />
+                                    </button>
+                                    {(item.key === 'latitude' || item.key === 'longitude') && selectedApp.latitude && selectedApp.longitude && (
+                                      <button onClick={() => openInMap(selectedApp.latitude, selectedApp.longitude)} className="p-1.5 text-text3 hover:text-accent">
+                                        <MapIcon className="w-3.5 h-3.5" />
+                                      </button>
+                                    )}
+                                  </div>
+                                </div>
+                              )}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
 
                   <div className="space-y-4">
@@ -784,12 +1062,28 @@ export default function AdminPortal() {
                               <span className="text-xs font-medium">{doc.label}</span>
                             </div>
                             {path ? (
-                              <button 
-                                onClick={() => getSignedUrl(path, doc.bucket)}
-                                className="text-[10px] font-bold text-accent uppercase hover:underline"
-                              >
-                                View
-                              </button>
+                              <div className="flex items-center gap-2">
+                                <button 
+                                  onClick={() => getSignedUrl(path, doc.bucket)}
+                                  className="text-[10px] font-bold text-accent uppercase hover:underline"
+                                >
+                                  View
+                                </button>
+                                <button 
+                                  onClick={async () => {
+                                    const { data, error } = await supabase.storage.from(doc.bucket).createSignedUrl(path, 60);
+                                    if (data?.signedUrl) {
+                                      copyToClipboard(data.signedUrl);
+                                    } else {
+                                      alert('Failed to get link');
+                                    }
+                                  }}
+                                  className="p-1 text-text3 hover:text-accent"
+                                  title="Copy Temporary Link"
+                                >
+                                  <Copy className="w-3 h-3" />
+                                </button>
+                              </div>
                             ) : (
                               <span className="text-[10px] text-text3 uppercase italic">Missing</span>
                             )}
@@ -817,20 +1111,43 @@ export default function AdminPortal() {
                   <div className="bg-surface2 p-5 rounded-sm border border-border space-y-4">
                     <h3 className="text-xs font-bold text-text3 uppercase tracking-widest">Review Actions</h3>
                     <div className="space-y-3">
-                      <button 
-                        onClick={() => updateStatus(selectedApp.id, 'approved')}
-                        disabled={selectedApp.status === 'approved'}
-                        className="w-full btn btn-success flex items-center justify-center gap-2 py-3 disabled:opacity-50"
-                      >
-                        <CheckCircle2 className="w-4 h-4" /> Approve
-                      </button>
-                      <button 
-                        onClick={() => updateStatus(selectedApp.id, 'rejected')}
-                        disabled={selectedApp.status === 'rejected'}
-                        className="w-full btn bg-danger text-white flex items-center justify-center gap-2 py-3 disabled:opacity-50"
-                      >
-                        <XCircle className="w-4 h-4" /> Reject
-                      </button>
+                      {/* Maker Actions */}
+                      {(userRole === 'maker' || userRole === 'admin') && selectedApp.status === 'pending' && (
+                        <>
+                          <button 
+                            onClick={() => handleStatusUpdate(selectedApp.id, 'review_requested', 'pending_review')}
+                            className="w-full btn btn-primary flex items-center justify-center gap-2 py-3"
+                          >
+                            <ShieldCheck className="w-4 h-4" /> Request Review
+                          </button>
+                          <button 
+                            onClick={() => handleStatusUpdate(selectedApp.id, 'rejected', 'completed')}
+                            className="w-full btn bg-danger text-white flex items-center justify-center gap-2 py-3"
+                          >
+                            <XCircle className="w-4 h-4" /> Reject
+                          </button>
+                        </>
+                      )}
+
+                      {/* Checker Actions */}
+                      {(userRole === 'checker' || userRole === 'admin') && (selectedApp.status === 'review_requested' || userRole === 'admin') && (
+                        <>
+                          <button 
+                            onClick={() => handleStatusUpdate(selectedApp.id, 'approved', 'completed')}
+                            disabled={selectedApp.status === 'approved'}
+                            className="w-full btn btn-success flex items-center justify-center gap-2 py-3 disabled:opacity-50"
+                          >
+                            <CheckCircle2 className="w-4 h-4" /> Approve
+                          </button>
+                          <button 
+                            onClick={() => handleStatusUpdate(selectedApp.id, 'rejected', 'completed')}
+                            disabled={selectedApp.status === 'rejected'}
+                            className="w-full btn bg-danger text-white flex items-center justify-center gap-2 py-3 disabled:opacity-50"
+                          >
+                            <XCircle className="w-4 h-4" /> Reject
+                          </button>
+                        </>
+                      )}
                     </div>
                   </div>
 
@@ -880,118 +1197,6 @@ export default function AdminPortal() {
         )}
       </AnimatePresence>
 
-      {/* Hidden PDF Template for Admin */}
-      {selectedApp && (
-        <div id="admin-pdf-template" className="fixed opacity-0 pointer-events-none top-0 left-0 w-[800px] bg-white p-10 text-slate-900 font-sans z-[-1]">
-          <div className="border-b-2 border-slate-900 pb-6 mb-8 flex justify-between items-end">
-            <div>
-              <h1 className="text-3xl font-bold tracking-tighter">SHWEBANK</h1>
-              <p className="text-sm font-medium text-slate-500">MERCHANT APPLICATION REVIEW</p>
-            </div>
-            <div className="text-right">
-              <div className="text-xs font-bold text-slate-400 uppercase">Application ID</div>
-              <div className="text-lg font-mono font-bold">{selectedApp.id}</div>
-            </div>
-          </div>
-
-          <div className="space-y-8">
-            <section>
-              <h2 className="text-xs font-bold bg-slate-100 p-2 mb-4 uppercase tracking-widest border-l-4 border-slate-900">1. Application Information</h2>
-              <table className="w-full border-collapse border border-slate-200 text-sm">
-                <tbody>
-                  <tr>
-                    <td className="border border-slate-200 p-2 bg-slate-50 font-bold w-1/3">Status</td>
-                    <td className="border border-slate-200 p-2 uppercase font-bold">{selectedApp.status}</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Onboarded By</td>
-                    <td className="border border-slate-200 p-2">{selectedApp.onboard_by}</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Applicant Email</td>
-                    <td className="border border-slate-200 p-2">{selectedApp.applicant_email}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </section>
-
-            <section>
-              <h2 className="text-xs font-bold bg-slate-100 p-2 mb-4 uppercase tracking-widest border-l-4 border-slate-900">2. Owner Information</h2>
-              <table className="w-full border-collapse border border-slate-200 text-sm">
-                <tbody>
-                  <tr>
-                    <td className="border border-slate-200 p-2 bg-slate-50 font-bold w-1/3">Full Name (EN)</td>
-                    <td className="border border-slate-200 p-2">{selectedApp.title} {selectedApp.last_name}</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Full Name (MM)</td>
-                    <td className="border border-slate-200 p-2">{selectedApp.title_mm} {selectedApp.last_name_mm}</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Phone Number</td>
-                    <td className="border border-slate-200 p-2">{selectedApp.merchant_phone_no}</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-slate-200 p-2 bg-slate-50 font-bold">NRC Number</td>
-                    <td className="border border-slate-200 p-2">{selectedApp.nrc_full}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </section>
-
-            <section>
-              <h2 className="text-xs font-bold bg-slate-100 p-2 mb-4 uppercase tracking-widest border-l-4 border-slate-900">3. Business Information</h2>
-              <table className="w-full border-collapse border border-slate-200 text-sm">
-                <tbody>
-                  <tr>
-                    <td className="border border-slate-200 p-2 bg-slate-50 font-bold w-1/3">Company Name (EN)</td>
-                    <td className="border border-slate-200 p-2">{selectedApp.company_name_en}</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Merchant Label (EN)</td>
-                    <td className="border border-slate-200 p-2">{selectedApp.merchant_label_en}</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Merchant Label (MM)</td>
-                    <td className="border border-slate-200 p-2">{selectedApp.merchant_label_mm}</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-slate-200 p-2 bg-slate-50 font-bold">MCC</td>
-                    <td className="border border-slate-200 p-2">{selectedApp.mcc_name} ({selectedApp.mcc_code})</td>
-                  </tr>
-                </tbody>
-              </table>
-            </section>
-
-            <section>
-              <h2 className="text-xs font-bold bg-slate-100 p-2 mb-4 uppercase tracking-widest border-l-4 border-slate-900">4. Address Details</h2>
-              <table className="w-full border-collapse border border-slate-200 text-sm">
-                <tbody>
-                  <tr>
-                    <td className="border border-slate-200 p-2 bg-slate-50 font-bold w-1/3">Owner Address</td>
-                    <td className="border border-slate-200 p-2">{selectedApp.owner_full_address}</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Merchant Address</td>
-                    <td className="border border-slate-200 p-2">{selectedApp.merchant_full_address}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </section>
-
-            <div className="pt-12 flex justify-between items-end">
-              <div className="text-center">
-                <div className="w-48 border-b border-slate-400 mb-2"></div>
-                <div className="text-[10px] uppercase font-bold text-slate-400">Date</div>
-              </div>
-              <div className="text-center">
-                <div className="w-48 border-b border-slate-400 mb-2"></div>
-                <div className="text-[10px] uppercase font-bold text-slate-400">Merchant Signature</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

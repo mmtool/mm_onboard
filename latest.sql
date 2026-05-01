@@ -3,8 +3,16 @@
 -- ==========================================
 -- Run this script in your Supabase SQL Editor
 
--- 1. MERCHANT APPLICATIONS TABLE
--- This table stores all onboarding data
+-- 1. USER PROFILES (For Maker-Checker Roles)
+CREATE TABLE IF NOT EXISTS user_profiles (
+    id uuid PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+    email text NOT NULL,
+    role text CHECK (role IN ('maker', 'checker', 'admin')) DEFAULT 'maker',
+    full_name text,
+    created_at timestamptz DEFAULT now()
+);
+
+-- 2. MERCHANT APPLICATIONS TABLE (ENHANCED)
 CREATE TABLE IF NOT EXISTS merchant_applications (
     id text PRIMARY KEY,
     onboard_by text,
@@ -61,15 +69,20 @@ CREATE TABLE IF NOT EXISTS merchant_applications (
     latitude text,
     longitude text,
     open_24_7 boolean DEFAULT true,
-    status text DEFAULT 'pending',
+    status text DEFAULT 'pending', -- pending, review_requested, approved, rejected
     submitted_at timestamptz DEFAULT now(),
+    
+    -- Maker-Checker Workflow Fields
+    maker_id uuid REFERENCES auth.users(id),
+    checker_id uuid REFERENCES auth.users(id),
+    workflow_status text DEFAULT 'draft', -- draft, submitted, pending_review, completed
     
     -- Admin Review Fields
     reviewed_by uuid REFERENCES auth.users(id),
     approved_at timestamptz,
     rejected_at timestamptz,
     
-    -- File paths (stored in storage buckets)
+    -- File paths
     doc_business_doc text,
     doc_agreement text,
     doc_shop_photo text,
@@ -78,8 +91,18 @@ CREATE TABLE IF NOT EXISTS merchant_applications (
     doc_signature text
 );
 
--- 2. APPLICATION TIMELINE TABLE
--- This table tracks history and notes
+-- 3. EMAIL LOGS TABLE
+CREATE TABLE IF NOT EXISTS email_logs (
+    id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    app_id text REFERENCES merchant_applications(id) ON DELETE CASCADE,
+    recipient text NOT NULL,
+    subject text NOT NULL,
+    body text NOT NULL,
+    status text DEFAULT 'sent',
+    created_at timestamptz DEFAULT now()
+);
+
+-- 4. APPLICATION TIMELINE TABLE
 CREATE TABLE IF NOT EXISTS application_timeline (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     app_id text REFERENCES merchant_applications(id) ON DELETE CASCADE,
@@ -89,30 +112,40 @@ CREATE TABLE IF NOT EXISTS application_timeline (
     created_at timestamptz DEFAULT now()
 );
 
--- 3. ENABLE ROW LEVEL SECURITY (RLS)
+-- 5. ENABLE RLS
+ALTER TABLE user_profiles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE merchant_applications ENABLE ROW LEVEL SECURITY;
 ALTER TABLE application_timeline ENABLE ROW LEVEL SECURITY;
+ALTER TABLE email_logs ENABLE ROW LEVEL SECURITY;
 
--- 4. SECURITY POLICIES
--- Policy: Allow anyone to submit (anon)
-DROP POLICY IF EXISTS "Public Insert" ON merchant_applications;
-CREATE POLICY "Public Insert" ON merchant_applications FOR INSERT TO anon WITH CHECK (true);
+-- 6. POLICIES
+-- Profiles: Users can read all profiles, but only update their own
+CREATE POLICY "Public Read Profiles" ON user_profiles FOR SELECT USING (true);
+CREATE POLICY "Users Update Own Profile" ON user_profiles FOR UPDATE USING (auth.uid() = id);
+CREATE POLICY "Admins Update All Profiles" ON user_profiles FOR UPDATE USING (
+  EXISTS (
+    SELECT 1 FROM user_profiles WHERE id = auth.uid() AND role = 'admin'
+  )
+);
 
-DROP POLICY IF EXISTS "Public Insert" ON application_timeline;
-CREATE POLICY "Public Insert" ON application_timeline FOR INSERT TO anon WITH CHECK (true);
+-- Applications: Public Insert, Authenticated Full Access
+CREATE POLICY "Public Insert Apps" ON merchant_applications FOR INSERT WITH CHECK (true);
+CREATE POLICY "Auth Full Access Apps" ON merchant_applications FOR ALL TO authenticated USING (true);
 
--- Policy: Allow authenticated admins to do everything
-DROP POLICY IF EXISTS "Admin Full Access" ON merchant_applications;
-CREATE POLICY "Admin Full Access" ON merchant_applications FOR ALL TO authenticated USING (true);
+-- Timeline: Public Insert, Authenticated Full Access
+CREATE POLICY "Public Insert Timeline" ON application_timeline FOR INSERT WITH CHECK (true);
+CREATE POLICY "Auth Full Access Timeline" ON application_timeline FOR ALL TO authenticated USING (true);
 
-DROP POLICY IF EXISTS "Admin Full Access" ON application_timeline;
-CREATE POLICY "Admin Full Access" ON application_timeline FOR ALL TO authenticated USING (true);
+-- Email Logs: Authenticated Read
+CREATE POLICY "Auth Read Email Logs" ON email_logs FOR SELECT TO authenticated USING (true);
+CREATE POLICY "System Insert Email Logs" ON email_logs FOR INSERT WITH CHECK (true);
 
--- 5. STORAGE BUCKETS SETUP (Manual Instructions)
--- Please go to the Supabase Dashboard -> Storage and create these buckets:
--- 1. 'merchant-docs' (Set to Public)
--- 2. 'merchant-photos' (Set to Public)
--- 3. 'merchant-signatures' (Set to Public)
+-- 7. STORAGE BUCKETS
+INSERT INTO storage.buckets (id, name, public) VALUES ('merchant-docs', 'merchant-docs', true) ON CONFLICT (id) DO NOTHING;
+INSERT INTO storage.buckets (id, name, public) VALUES ('merchant-photos', 'merchant-photos', true) ON CONFLICT (id) DO NOTHING;
+
+CREATE POLICY "Public Upload" ON storage.objects FOR INSERT WITH CHECK (bucket_id IN ('merchant-docs', 'merchant-photos'));
+CREATE POLICY "Public View" ON storage.objects FOR SELECT WITH CHECK (bucket_id IN ('merchant-docs', 'merchant-photos'));
 
 -- 6. SEED INITIAL ADMIN (Optional)
 -- You can create an admin user in the Supabase Auth dashboard.

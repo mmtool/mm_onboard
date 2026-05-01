@@ -13,10 +13,9 @@ import {
   X, 
   Download,
   AlertCircle,
-  Loader2
+  Loader2,
+  Copy
 } from 'lucide-react';
-import { jsPDF } from 'jspdf';
-import html2canvas from 'html2canvas';
 import { supabase } from '../lib/supabase';
 import { 
   fetchAddressData, 
@@ -97,7 +96,7 @@ const STEPS = [
 export default function OnboardingForm() {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormData>({
-    id: 'MOB-' + Math.random().toString(36).substring(2, 10).toUpperCase(),
+    id: '', 
     onboard_by: '',
     applicant_email: '',
     merchant_phone_no: '',
@@ -180,6 +179,7 @@ export default function OnboardingForm() {
       }
     };
     loadData();
+    generateId();
 
     // GPS
     if (navigator.geolocation) {
@@ -192,6 +192,23 @@ export default function OnboardingForm() {
       });
     }
   }, []);
+
+  const generateId = async () => {
+    try {
+      const { count, error } = await supabase
+        .from('merchant_applications')
+        .select('id', { count: 'exact', head: true });
+      
+      if (error) throw error;
+      
+      const baseId = 81000001;
+      const nextId = baseId + (count || 0);
+      setFormData(prev => ({ ...prev, id: nextId.toString() }));
+    } catch (err) {
+      console.error('Error generating ID:', err);
+      setFormData(prev => ({ ...prev, id: (81000001 + Math.floor(Math.random() * 1000)).toString() }));
+    }
+  };
 
   const fillDemoData = () => {
     setFormData(prev => ({
@@ -254,7 +271,7 @@ export default function OnboardingForm() {
 
   const resetForm = () => {
     setFormData({
-      id: 'MOB-' + Math.random().toString(36).substring(2, 10).toUpperCase(),
+      id: '',
       onboard_by: '',
       applicant_email: '',
       merchant_phone_no: '',
@@ -473,7 +490,11 @@ export default function OnboardingForm() {
       // 1. Upload Files
       const filePaths: Record<string, string> = {};
       const uploadPromises = Object.entries(files).map(async ([key, file]) => {
-        const fileName = `${formData.id}/${key}_${Date.now()}_${file.name}`;
+        // Pattern: uploads/merchant/{id}_{key}_{timestamp}_{original_filename}
+        const timestamp = Date.now();
+        const safeFileName = file.name.replace(/[^a-z0-9.]/gi, '_').toLowerCase();
+        const fileName = `uploads/merchant/${formData.id}_${key}_${timestamp}_${safeFileName}`;
+        
         const bucket = key === 'zone_shop_photo' ? 'merchant-photos' : 'merchant-docs';
         const { error } = await supabase.storage.from(bucket).upload(fileName, file);
         if (error) throw error;
@@ -501,172 +522,91 @@ export default function OnboardingForm() {
         note: `Submitted via ${formData.onboard_by} channel`
       });
 
+      // 5. Send Email Notification (Simulation)
+      const emailBody = `
+        New Merchant Application Submitted
+        ----------------------------------
+        Application ID: ${formData.id}
+        Merchant: ${formData.merchant_label_en}
+        Email: ${formData.applicant_email}
+        Phone: ${formData.merchant_phone_no}
+        
+        Sender: System Onboarding
+        Receiver: kaunghtet.min@mo.com.mm
+      `;
+
+      await supabase.from('email_logs').insert({
+        app_id: formData.id,
+        recipient: 'kaunghtet.min@mo.com.mm',
+        subject: `New Submission: ${formData.merchant_label_en}`,
+        body: emailBody
+      });
+
       setIsSubmitted(true);
     } catch (err: any) {
       console.error('Submission error (Full Object):', err);
       let msg = err.message || 'Unknown error';
-      if (msg.toLowerCase().includes('apikey') || msg.toLowerCase().includes('jwt') || msg.includes('401')) {
+      
+      // Handle RLS or specific Supabase errors
+      if (err.code === '42501') {
+        msg = 'Permission Denied (RLS Error). Please ensure you have run the latest.sql script in Supabase SQL Editor.';
+      } else if (msg.toLowerCase().includes('apikey') || msg.toLowerCase().includes('jwt') || msg.includes('401')) {
         msg = 'Invalid API Key. Please ensure VITE_SUPABASE_ANON_KEY is correct in Netlify settings.';
       }
+      
       alert('Submission failed: ' + msg);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const downloadPDF = async () => {
-    const element = document.getElementById('pdf-template');
-    if (!element) {
-      console.error('PDF template not found');
-      return;
-    }
+  const downloadMarkdown = () => {
+    const mdContent = `
+# SHWEBANK Merchant Application
+**ID:** ${formData.id}
+**Submitted At:** ${new Date().toLocaleString()}
 
-    try {
-      const canvas = await html2canvas(element, {
-        scale: 2,
-        useCORS: true,
-        logging: false,
-        backgroundColor: '#ffffff',
-        windowWidth: 800
-      });
-      
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      const imgProps = pdf.getImageProperties(imgData);
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      
-      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save(`Onboarding_${formData.id}.pdf`);
-    } catch (err) {
-      console.error('PDF generation error:', err);
-      alert('Failed to generate PDF. Please try again.');
-    }
+## 1. Application Information
+- **Onboarded By:** ${formData.onboard_by}
+- **Applicant Email:** ${formData.applicant_email}
+- **Phone Number:** ${formData.merchant_phone_no}
+
+## 2. Personal Information
+- **Full Name (EN):** ${formData.title} ${formData.last_name}
+- **Full Name (MM):** ${formData.title_mm} ${formData.last_name_mm}
+- **Date of Birth:** ${formData.dob}
+- **Father Name:** ${formData.father_name}
+- **Gender:** ${formData.gender}
+- **Marital Status:** ${formData.marital_status}
+- **NRC Number:** ${formData.nrc_full}
+
+## 3. Business Information
+- **Merchant Label (EN):** ${formData.merchant_label_en}
+- **Merchant Label (MM):** ${formData.merchant_label_mm}
+- **Company Name (EN):** ${formData.company_name_en}
+- **MCC:** ${formData.mcc_name} (${formData.mcc_code})
+- **MCC Group:** ${formData.mcc_group}
+- **DICA/GRN/RCDC:** ${formData.dica_grn_rcdc}
+
+## 4. Address Details
+- **Owner Address:** ${formData.owner_full_address}
+- **Merchant Address:** ${formData.merchant_full_address}
+- **Coordinates:** ${formData.latitude}, ${formData.longitude}
+
+---
+Generated by SHWEBANK Onboarding System
+    `.trim();
+
+    const blob = new Blob([mdContent], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `shwebank_${formData.id}.md`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
-
-  const PDFTemplate = () => (
-    <div id="pdf-template" className="fixed -left-[9999px] top-0 w-[800px] bg-white p-10 text-slate-900 font-sans">
-      <div className="border-b-2 border-slate-900 pb-6 mb-8 flex justify-between items-end">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tighter">SHWEBANK</h1>
-          <p className="text-sm font-medium text-slate-500">MERCHANT ONBOARDING FORM</p>
-        </div>
-        <div className="text-right">
-          <div className="text-xs font-bold text-slate-400 uppercase">Application ID</div>
-          <div className="text-lg font-mono font-bold">{formData.id}</div>
-        </div>
-      </div>
-
-      <div className="space-y-8">
-        <section>
-          <h2 className="text-xs font-bold bg-slate-100 p-2 mb-4 uppercase tracking-widest border-l-4 border-slate-900">1. Application Information</h2>
-          <table className="w-full border-collapse border border-slate-200 text-sm">
-            <tbody>
-              <tr>
-                <td className="border border-slate-200 p-2 bg-slate-50 font-bold w-1/3">Onboarded By</td>
-                <td className="border border-slate-200 p-2">{formData.onboard_by}</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Applicant Email</td>
-                <td className="border border-slate-200 p-2">{formData.applicant_email}</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-
-        <section>
-          <h2 className="text-xs font-bold bg-slate-100 p-2 mb-4 uppercase tracking-widest border-l-4 border-slate-900">2. Owner Information</h2>
-          <table className="w-full border-collapse border border-slate-200 text-sm">
-            <tbody>
-              <tr>
-                <td className="border border-slate-200 p-2 bg-slate-50 font-bold w-1/3">Full Name (EN)</td>
-                <td className="border border-slate-200 p-2">{formData.title} {formData.last_name}</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Full Name (MM)</td>
-                <td className="border border-slate-200 p-2">{formData.title_mm} {formData.last_name_mm}</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Phone Number</td>
-                <td className="border border-slate-200 p-2">{formData.merchant_phone_no}</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">NRC Number</td>
-                <td className="border border-slate-200 p-2">{formData.nrc_full}</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Date of Birth</td>
-                <td className="border border-slate-200 p-2">{formData.dob}</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Father's Name</td>
-                <td className="border border-slate-200 p-2">{formData.father_name}</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-
-        <section>
-          <h2 className="text-xs font-bold bg-slate-100 p-2 mb-4 uppercase tracking-widest border-l-4 border-slate-900">3. Business Information</h2>
-          <table className="w-full border-collapse border border-slate-200 text-sm">
-            <tbody>
-              <tr>
-                <td className="border border-slate-200 p-2 bg-slate-50 font-bold w-1/3">Company Name (EN)</td>
-                <td className="border border-slate-200 p-2">{formData.company_name_en}</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Company Name (MM)</td>
-                <td className="border border-slate-200 p-2">{formData.company_name_mm}</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Merchant Label (EN)</td>
-                <td className="border border-slate-200 p-2">{formData.merchant_label_en}</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Merchant Label (MM)</td>
-                <td className="border border-slate-200 p-2">{formData.merchant_label_mm}</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">MCC</td>
-                <td className="border border-slate-200 p-2">{formData.mcc_name} ({formData.mcc_code})</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">DICA / GRN / RCDC</td>
-                <td className="border border-slate-200 p-2">{formData.dica_grn_rcdc || 'N/A'}</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-
-        <section>
-          <h2 className="text-xs font-bold bg-slate-100 p-2 mb-4 uppercase tracking-widest border-l-4 border-slate-900">4. Address Details</h2>
-          <table className="w-full border-collapse border border-slate-200 text-sm">
-            <tbody>
-              <tr>
-                <td className="border border-slate-200 p-2 bg-slate-50 font-bold w-1/3">Owner Address</td>
-                <td className="border border-slate-200 p-2">{formData.owner_full_address}</td>
-              </tr>
-              <tr>
-                <td className="border border-slate-200 p-2 bg-slate-50 font-bold">Merchant Address</td>
-                <td className="border border-slate-200 p-2">{formData.merchant_full_address}</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-
-        <div className="pt-12 flex justify-between items-end">
-          <div className="text-center">
-            <div className="w-48 border-b border-slate-400 mb-2"></div>
-            <div className="text-[10px] uppercase font-bold text-slate-400">Date</div>
-          </div>
-          <div className="text-center">
-            <div className="w-48 border-b border-slate-400 mb-2"></div>
-            <div className="text-[10px] uppercase font-bold text-slate-400">Merchant Signature</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
 
   // --- Render Helpers ---
   const renderField = (id: string, label: string, type: string = 'text', placeholder: string = '', options: any[] = [], required = false, readonly = false) => {
@@ -724,10 +664,10 @@ export default function OnboardingForm() {
             </div>
             <div className="flex flex-col gap-3">
               <button 
-                onClick={downloadPDF}
+                onClick={downloadMarkdown}
                 className="btn btn-ghost w-full flex items-center justify-center gap-2"
               >
-                <Download className="w-4 h-4" /> Download Onboarding PDF
+                <Download className="w-4 h-4" /> Download Markdown (.md)
               </button>
               <button 
                 onClick={resetForm}
@@ -738,7 +678,6 @@ export default function OnboardingForm() {
             </div>
           </motion.div>
         </div>
-        <PDFTemplate />
       </>
     );
   }
@@ -1014,8 +953,6 @@ export default function OnboardingForm() {
           </span>
         </div>
       </div>
-
-      <PDFTemplate />
     </div>
   );
 }
